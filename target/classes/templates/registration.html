@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title> Registration </title>
+    <link th:href="@{/css/registration.css}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        <form
+                th:method="POST"
+                th:action="@{/register}"
+                th:object="${userRegisterDto}">
+
+
+            <div class="user-details">
+
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text"
+                           placeholder="Enter your username"
+                           required
+                           class="form-control is-invalid alert-danger"
+                           th:field="*{username}"
+                           th:errorclass="'is-invalid alert-danger'"/>
+
+                    <small th:each="error: ${#fields.errors('username')}" th:text="${error}" class="text-danger">Username error message</small>
+
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="text"
+                           placeholder="Enter your email"
+                           required
+                           class="form-control is-invalid alert-danger"
+                           th:field="*{email}"
+                           th:errorclass="'is-invalid alert-danger'">
+
+
+                    <small th:each="error: ${#fields.errors('email')}" th:text="${error}" class="text-danger">Email error message</small>
+
+                </div>
+
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password"
+                           placeholder="Enter your password"
+                           required
+                           class="form-control is-invalid alert-danger"
+                           name="password"
+                           th:field="*{password}"
+                           th:errorclass="'is-invalid alert-danger'">
+
+
+                    <small th:each="error: ${#fields.errors('password')}"   th:text="${error}"  class="text-danger">Password error message</small>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirm Password</span>
+                    <input type="password"
+                           placeholder="Confirm your password"
+                           required
+                           name="confirmPassword"
+                           th:field="*{confirmPassword}"
+                           th:errorclass="'is-invalid alert-danger'">
+
+                    <small th:if="${#fields.errors('confirmPassword')}"   th:errors="*{confirmPassword}"  class="text-danger">Password error message</small>
+
+                </div>
+            </div>
+
+
+
+            <th:block  th:field="*{gender}">
+                <div class="gender-details">
+                    <input type="radio"
+                           name="gender"
+                           id="dot-1"
+                           value="Male"
+                           class="form-control is-invalid alert-danger">
+                    <input type="radio"
+                           name="gender"
+                           id="dot-2"
+                           value="Female"
+                           class="form-control is-invalid alert-danger">
+                    <span class="gender-title">Gender</span>
+                    <div class="category">
+
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="gender"> Male </span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="gender">Female </span>
+                        </label>
+
+                    </div>
+
+                    <small th:each="error: ${#fields.errors('gender')}" th:text="${error}" class="text-danger">Gender error message</small>
+
+                </div>
+
+
+
+            </th:block>
+
+
+
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
