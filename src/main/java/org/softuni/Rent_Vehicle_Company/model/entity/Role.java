@@ -1,4 +1,4 @@
-package org.softuni.Rent_Vehicle_Company.entity;
+package org.softuni.Rent_Vehicle_Company.model.entity;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.softuni.Rent_Vehicle_Company.entity.enums.UserRoleEnum;
+import org.softuni.Rent_Vehicle_Company.model.enums.UserRoleEnum;
 
 import java.util.ArrayList;
 import java.util.List;

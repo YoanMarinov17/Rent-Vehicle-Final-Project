@@ -2,16 +2,13 @@ package org.softuni.Rent_Vehicle_Company.service.impl;
 
 
 import org.modelmapper.ModelMapper;
-import org.softuni.Rent_Vehicle_Company.entity.Role;
-import org.softuni.Rent_Vehicle_Company.entity.User;
-import org.softuni.Rent_Vehicle_Company.entity.dto.UserRegisterDto;
+import org.softuni.Rent_Vehicle_Company.model.entity.User;
+import org.softuni.Rent_Vehicle_Company.model.dto.UserRegisterDto;
 import org.softuni.Rent_Vehicle_Company.repository.RoleRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 
 @Service

@@ -1,4 +1,4 @@
-package org.softuni.Rent_Vehicle_Company.entity;
+package org.softuni.Rent_Vehicle_Company.model.entity;
 
 
 import jakarta.persistence.*;
@@ -32,6 +32,10 @@ public class User extends BaseEntity{
         @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
         private List<Role> roles = new ArrayList<>();
+
+
+        @OneToMany
+        private List<Vehicle> vehicles = new ArrayList<>();
 
         public User() {}
 }

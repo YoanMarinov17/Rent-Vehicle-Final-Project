@@ -1,4 +1,4 @@
-package org.softuni.Rent_Vehicle_Company.entity;
+package org.softuni.Rent_Vehicle_Company.model.entity;
 
 
 import jakarta.persistence.GeneratedValue;

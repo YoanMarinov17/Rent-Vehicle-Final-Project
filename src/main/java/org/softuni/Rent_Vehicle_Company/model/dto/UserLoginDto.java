@@ -1,4 +1,4 @@
-package org.softuni.Rent_Vehicle_Company.entity.dto;
+package org.softuni.Rent_Vehicle_Company.model.dto;
 
 
 import jakarta.validation.constraints.NotBlank;

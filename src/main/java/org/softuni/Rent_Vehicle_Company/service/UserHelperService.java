@@ -1,7 +1,7 @@
 package org.softuni.Rent_Vehicle_Company.service;
 
 import lombok.RequiredArgsConstructor;
-import org.softuni.Rent_Vehicle_Company.entity.User;
+import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

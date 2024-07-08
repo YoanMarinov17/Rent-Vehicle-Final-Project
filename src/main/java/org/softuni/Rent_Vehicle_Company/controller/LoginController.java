@@ -2,16 +2,12 @@ package org.softuni.Rent_Vehicle_Company.controller;
 
 
 import jakarta.validation.Valid;
-import org.softuni.Rent_Vehicle_Company.entity.dto.UserLoginDto;
-import org.softuni.Rent_Vehicle_Company.entity.dto.UserRegisterDto;
+import org.softuni.Rent_Vehicle_Company.model.dto.UserLoginDto;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
