@@ -1,4 +1,4 @@
-package org.softuni.Rent_Vehicle_Company.model.entity.Cars;
+package org.softuni.Rent_Vehicle_Company.entity.Cars;
 
 
 import jakarta.persistence.Column;
@@ -7,9 +7,9 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.softuni.Rent_Vehicle_Company.model.enums.EngineEnum;
-import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
-import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
+import org.softuni.Rent_Vehicle_Company.entity.enums.EngineEnum;
+import org.softuni.Rent_Vehicle_Company.entity.enums.TypeCar;
+import org.softuni.Rent_Vehicle_Company.entity.enums.TypeEnum;
 
 @Getter
 @Setter

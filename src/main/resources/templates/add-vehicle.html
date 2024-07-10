@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Vehicle</title>
+    <style>
+        .vehicle-fields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form id="vehicleForm"
+      th:action="@{/add-vehicle}"
+      th:object="${vehicleDto}"
+      method="POST">
+
+
+    <label for="vehicleType">Select Vehicle Type:</label>
+    <select id="vehicleType" name="vehicleType" onchange="showFields()" th:field="*{type}">
+        <option value="">--Select--</option>
+        <option th:each="type: ${allVehicleTypes}"
+                th:value="${type}"
+                th:text="${type}"
+        ></option>
+
+    </select>
+
+    <!-- Common Fields -->
+    <div>
+        <label for="model">Model:</label>
+        <input  th:field="*{model}" type="text" id="model" name="model">
+    </div>
+    <div>
+        <label for="year">Year:</label>
+        <input th:field="*{year}" type="number" id="year" name="year">
+    </div>
+
+
+    <div>
+        <label for="engineType"  th:field="*{engine}" >Engine Type:</label>
+
+        <select id="engineType" name="engineType" onchange="showFields()">
+            <option value="">--Select--</option>
+            <option th:each="type: ${allEngineTypes}"
+                    th:value="${type}"
+                    th:text="${type}"
+            ></option>
+        </select>
+    </div>
+
+
+
+
+
+<!--    &lt;!&ndash; Car Specific Fields &ndash;&gt;-->
+<!--    <div id="carFields" class="vehicle-fields">-->
+<!--        <label for="carType">Car Type:</label>-->
+<!--        <select id="carType" name="carType" onchange="showFields()" th:field="*{carType}">-->
+<!--            <option value="">&#45;&#45;Select&#45;&#45;</option>-->
+<!--            <option th:each="type: ${allCarsType}"-->
+<!--                    th:value="${type}"-->
+<!--                    th:text="${type}"-->
+<!--            ></option>-->
+<!--        </select>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="" class="label">Horse Power</label>-->
+<!--            <input type="text" class="form-control" th:field="*{horsePower}" >-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="" class="label">Number of doors</label>-->
+<!--            <select id="numberOfDoors" name="numberOfDoors" onchange="showFields()" th:field="*{numberDoors}">-->
+<!--                <option value="">&#45;&#45;Select&#45;&#45;</option>-->
+<!--                <option value="2"> 2 </option>-->
+<!--                <option value="4"> 4 </option>-->
+<!--                <option value="5"> 5 </option>-->
+
+<!--            </select>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="" class="label">Number of seats</label>-->
+<!--            <select id="numberOfSeats" name="numberOfSeats" onchange="showFields()" th:field="*{numberSeats}">-->
+<!--                <option value="">&#45;&#45;Select&#45;&#45;</option>-->
+<!--                <option value="2"> 2 </option>-->
+<!--                <option value="4"> 4 </option>-->
+<!--                <option value="5"> 5 </option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+
+
+
+
+<!--    &lt;!&ndash; Van Specific Fields &ndash;&gt;-->
+<!--    <div id="vanFields" class="vehicle-fields">-->
+<!--        &lt;!&ndash; Add Van-specific fields here &ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            <label for="" class="label">Van - Number of seats</label>-->
+<!--            <select id="numberOfVanSeats" name="numberOfVanSeats" onchange="showFields()" th:field="*{numberDoors}">-->
+<!--                <option value="">&#45;&#45;Select&#45;&#45;</option>-->
+<!--                <option value="VAN"> 6 </option>-->
+<!--                <option value="VAN"> 8 </option>-->
+<!--                <option value="VAN"> 10 </option>-->
+<!--                <option value="VAN"> 12 </option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Truck Specific Fields &ndash;&gt;-->
+<!--    <div id="truckFields" class="vehicle-fields">-->
+<!--        &lt;!&ndash; Add Truck-specific fields here &ndash;&gt;-->
+<!--        <label for="" class="label">Up-Tones</label>-->
+<!--        <select id="upTones" name="upTones" onchange="showFields()" th:field="*{upTones}">-->
+<!--            <option value="">&#45;&#45;Select&#45;&#45;</option>-->
+<!--            <option value="TRUCK"> Up to 1,2t </option>-->
+<!--            <option value="TRUCK"> Up to 12t </option>-->
+<!--            <option value="TRUCk"> Up to 24t </option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+
+
+
+    <div class="row">
+        <div class="col col-md-4">
+            <div class="button-holder d-flex">
+                <input type="submit" class="btn btn-info btn-lg" value="Submit vehicle"/>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function showFields() {
+        var vehicleType = document.getElementById("vehicleType").value;
+
+        // Hide all vehicle-specific fields
+        document.getElementById("carFields").style.display = "none";
+        document.getElementById("vanFields").style.display = "none";
+        document.getElementById("truckFields").style.display = "none";
+
+        // Show the selected vehicle's fields
+        if (vehicleType === "CAR") {
+            document.getElementById("carFields").style.display = "block";
+        } else if (vehicleType === "VAN") {
+            document.getElementById("vanFields").style.display = "block";
+        } else if (vehicleType === "TRUCK") {
+            document.getElementById("truckFields").style.display = "block";
+        } else {
+
+        }
+    }
+</script>
+</body>
+</html>
