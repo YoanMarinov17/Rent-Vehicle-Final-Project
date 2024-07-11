@@ -2,94 +2,136 @@ package org.softuni.Rent_Vehicle_Company.service.impl;
 
 
 import org.modelmapper.ModelMapper;
-import org.softuni.Rent_Vehicle_Company.model.dto.CarDto;
-import org.softuni.Rent_Vehicle_Company.model.dto.TruckDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VehicleDto;
-import org.softuni.Rent_Vehicle_Company.model.entity.Cars.Car;
-import org.softuni.Rent_Vehicle_Company.model.entity.Cars.ElectricCar;
-import org.softuni.Rent_Vehicle_Company.model.entity.Cars.NormalCar;
-import org.softuni.Rent_Vehicle_Company.model.entity.Cars.PremiumCar;
+import org.softuni.Rent_Vehicle_Company.model.entity.Car;
 import org.softuni.Rent_Vehicle_Company.model.entity.Truck;
 import org.softuni.Rent_Vehicle_Company.model.entity.Van;
-import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
-import org.softuni.Rent_Vehicle_Company.model.enums.EngineEnum;
-import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
+
+import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
 import org.softuni.Rent_Vehicle_Company.repository.TruckRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
-   private final VehicleRepository vehicleRepository;
-   private final ModelMapper modelMapper;
+    private final VehicleRepository vehicleRepository;
+    private final ModelMapper modelMapper;
 
 
-
-   private final TruckRepository truckRepository;
-
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, TruckRepository truckRepository) {
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelmapper) {
         this.vehicleRepository = vehicleRepository;
-        this.modelMapper = modelMapper;
-        this.truckRepository = truckRepository;
+        this.modelMapper = modelmapper;
+
     }
 
     @Override
-    public void createVehicle(VehicleDto vehicleDto) {
+    public void createTruck(VehicleDto vehicleDto, int upTones) {
+        Truck truck = new Truck();
+        //Data from DTO
+        truck.setType(vehicleDto.getType());
+        truck.setEngine(vehicleDto.getEngine());
+        truck.setModel(vehicleDto.getModel());
+        truck.setYear(vehicleDto.getYear());
 
-        switch (vehicleDto.getType()){
+        //Data from @RequestParam
+        modelMapper.map(vehicleDto, Truck.class);
+
+//        truck.setUpTones(upTones);
+        vehicleRepository.save(truck);
+    }
+
+
+
+    @Override
+    public void createCar(VehicleDto vehicleDto, TypeCar type, int horsePower, int numberSeats, int numberDoors) {
+        Car car = new Car();
+
+//        // Data from DTO
+        car.setType(vehicleDto.getType());
+        car.setEngine(vehicleDto.getEngine());
+        car.setModel(vehicleDto.getModel());
+        car.setYear(vehicleDto.getYear());
+
+        //Data from @RequestParam
+        modelMapper.map(vehicleDto, Car.class);
+//        car.setCarType(type);
+//        car.setHorsePower(horsePower);
+//        car.setNumberOfDoors(numberDoors);
+//        car.setNumberOfSeats(numberSeats);
+
+        vehicleRepository.save(car);
+    }
+
+
+
+    @Override
+    public void createVan(VehicleDto vehicleDto, int numberOfVanSeats) {
+
+        Van van = new Van();
+        //Data from DTO
+        van.setType(vehicleDto.getType());
+        van.setEngine(vehicleDto.getEngine());
+        van.setModel(vehicleDto.getModel());
+        van.setYear(vehicleDto.getYear());
+
+
+        //Data from @RequestParam
+        modelMapper.map(vehicleDto, Van.class);
+//        van.setNumberOfVanSeats(numberOfVanSeats);
+
+        vehicleRepository.save(van);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        switch (vehicleDto.getType()) {
 //            case CAR:
-//            Car car = new Car();
-//            modelMapper.map(vehicleDto, Car.class);
-//            vehicleRepository.save(car);
-
-//            switch (car.getCarType()){
+//                Vehicle car = new Car();
+//                car.setType(vehicleDto.getType());
+//                car.setYear(vehicleDto.getYear());
+//                car.setModel(vehicleDto.getModel());
+//                car.setEngine(vehicleDto.getEngine());
 //
-//                case NORMAL:
-//                    NormalCar normalCar = new NormalCar();
-//                    normalCar.setAirConditioner(vehicleDto.isHasAirConditioner());
-//
-//                case PREMIUM:
-//
-//                    PremiumCar premiumCar = new PremiumCar();
-//                    premiumCar.setTypePremiumCar(vehicleDto.getPremiumType());
-//
-//                case ELECTRIC:
-//                    ElectricCar electricCar = new ElectricCar();
-//                    electricCar.setBatteryLifeInKm(vehicleDto.getBatteryLife());
-//            }
-
-//            break;
-//
-//            case VAN:
-//                Van van = new Van();
-//                van.setNumberOfSeats(vehicleDto.getNumberSeats());
+//                vehicleRepository.save(car);
 //                break;
 //
-            case TRUCK:
-
-
-                Truck truck = new Truck();
-                truck.setType(vehicleDto.getType());
-                truck.setModel(vehicleDto.getModel());
-                truck.setYear(vehicleDto.getYear());
-                truck.setEngine(vehicleDto.getEngine());
-
-                truckRepository.save(truck);
-
-                break;
-        }
-
-//        Vehicle vehicle = new Vehicle() {};
+//            case VAN:
+//                Vehicle van = new Van();
+//                van.setType(vehicleDto.getType());
+//                van.setYear(vehicleDto.getYear());
+//                van.setModel(vehicleDto.getModel());
+//                van.setEngine(vehicleDto.getEngine());
 //
-//        vehicle.setType(vehicleDto.getType());
-//        vehicle.setModel(vehicleDto.getModel());
-//        vehicle.setYear(vehicleDto.getYear());
-//        vehicle.setEngine(vehicleDto.getEngine());
+//                vehicleRepository.save(van);
+//                break;
+////
+//            case TRUCK:
+
+    //        truck.setType(vehicleDto.getType());
+    //        truck.setModel(vehicleDto.getModel());
+    //        truck.setYear(vehicleDto.getYear());
+    //        truck.setEngine(vehicleDto.getEngine());
+
+//
+//                break;
+//        }
 
 
-    }
 }

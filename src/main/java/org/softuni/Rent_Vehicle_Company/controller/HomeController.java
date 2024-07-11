@@ -38,7 +38,7 @@ public class HomeController {
 
     @GetMapping("/car")
     public ModelAndView car() {
-        return new ModelAndView("car");
+        return new ModelAndView("cars");
     }
 
 

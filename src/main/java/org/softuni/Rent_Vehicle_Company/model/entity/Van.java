@@ -4,7 +4,6 @@ package org.softuni.Rent_Vehicle_Company.model.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,14 +20,14 @@ public class Van extends Vehicle{
 
 
     @Column(name = "number_seats")
-    private Integer numberOfSeats;
+    private Integer numberOfVanSeats;
 
-    public Van(TypeEnum type, String model, int year, EngineEnum engine, Integer numberOfSeats) {
+    public Van(TypeEnum type, String model, int year, EngineEnum engine, Integer numberOfVanSeats) {
         super(TypeEnum.VAN, model, year, engine);
-        this.numberOfSeats = numberOfSeats;
+        this.numberOfVanSeats = numberOfVanSeats;
     }
 
-    public Van(Integer numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
+    public Van(Integer numberOfVanSeats) {
+        this.numberOfVanSeats = numberOfVanSeats;
     }
 }

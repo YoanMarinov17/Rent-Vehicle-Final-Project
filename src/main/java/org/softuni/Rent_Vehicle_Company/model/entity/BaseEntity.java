@@ -6,12 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @MappedSuperclass
 @Getter
 @Setter
-
 public class BaseEntity {
 
 
@@ -19,6 +19,5 @@ public class BaseEntity {
     @Id
     private long id;
 
-    public BaseEntity() {
-    }
+    public BaseEntity() {}
 }
