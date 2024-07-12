@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Truck</title>
+    <style>
+        .vehicle-fields {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+
+<form id="vehicleForm"
+      th:action="@{/add-truck}"
+      th:object="${truckDto}"
+      method="POST">
+
+
+
+    <label for="">Give truck for rent :</label>
+
+
+    <!-- Common Fields -->
+    <div>
+        <label for="model">Brand:</label>
+        <input  th:field="*{brand}" type="text" id="brand" name="brand">
+    </div>
+
+
+    <div>
+        <label for="model">Model:</label>
+        <input  th:field="*{model}" type="text" id="model" name="model">
+    </div>
+    <div>
+        <label for="year">Year:</label>
+        <input th:field="*{year}" type="number" id="year" name="year">
+    </div>
+
+
+    <div>
+        <label for="engine"  th:field="*{engine}" >Engine Type:</label>
+
+        <select id="engine" name="engine" onchange="showFields()">
+            <option value="">--Select--</option>
+            <option th:each="type: ${allEngineTypes}"
+                    th:value="${type}"
+                    th:text="${type}"
+            ></option>
+        </select>
+    </div>
+
+
+
+    <!-- Truck Specific Fields -->
+    <div id="truckFields" class="vehicle-fields">
+        <!-- Add Truck-specific fields here -->
+        <div class="form-group">
+            <label for="" class="label">Up-Tones</label>
+            <select id="upTones" name="upTones" onchange="showFields()" th:field="*{upTones}">
+                <option value="">--Select--</option>
+                <option value="Up to 1,2t">Up to 1,2t</option>
+                <option value="Up to 12t">Up to 12t  </option>
+                <option value="Up to 24t">Up to 24t </option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col col-md-4">
+            <div class="button-holder d-flex">
+                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit vehicle"/>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+
+
+
+<script>
+    function showFields() {
+        var vehicleType = document.getElementById("vehicleType").value;
+
+        // Hide all vehicle-specific fields
+        document.getElementById("carFields").style.display = "none";
+        document.getElementById("vanFields").style.display = "none";
+        document.getElementById("truckFields").style.display = "none";
+
+        // Show the selected vehicle's fields
+        if (vehicleType === "CAR") {
+            document.getElementById("carFields").style.display = "block";
+        } else if (vehicleType === "VAN") {
+            document.getElementById("vanFields").style.display = "block";
+        } else if (vehicleType === "TRUCK") {
+            document.getElementById("truckFields").style.display = "block";
+        } else {
+
+        }
+    }
+</script>
+</body>
+</html>

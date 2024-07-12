@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+
+
+</head>
+<body>
+
+
+
+
+<form id="vehicleForm"
+      th:action="@{/add-car}"
+      th:object="${carDto}"
+      method="POST">
+
+
+    <label for="">Give car for rent :</label>
+
+    <!-- Common Fields -->
+    <div>
+        <label for="model">Brand:</label>
+        <input  th:field="*{brand}" type="text" id="brand" name="brand">
+    </div>
+
+
+    <div>
+        <label for="model">Model:</label>
+        <input  th:field="*{model}" type="text" id="model" name="model">
+    </div>
+    <div>
+        <label for="year">Year:</label>
+        <input th:field="*{year}" type="number" id="year" name="year">
+    </div>
+
+
+    <div>
+        <label for="engine"  th:field="*{engine}" >Engine Type:</label>
+
+        <select id="engine" name="engine" onchange="showFields()">
+            <option value="">--Select--</option>
+            <option th:each="type: ${allEngineTypes}"
+                    th:value="${type}"
+                    th:text="${type}"
+            ></option>
+        </select>
+    </div>
+
+
+
+    <!-- Car Specific Fields -->
+    <div id="carFields" class="vehicle-fields">
+        <label for="carType">Car Type:</label>
+        <select id="carType" name="carType" onchange="showFields()" th:field="*{carType}">
+            <option value="">--Select--</option>
+            <option th:each="type: ${allCarsType}"
+                    th:value="${type}"
+                    th:text="${type}"
+            ></option>
+        </select>
+
+
+        <div class="form-group">
+            <label for="" class="label">Horse Power</label>
+            <input type="text" class="form-control" id="horsePower" name="horsePower" th:field="*{horsePower}" >
+        </div>
+
+        <div class="form-group">
+            <label for="" class="label">Number of doors</label>
+            <select id="numberDoors" name="numberDoors" onchange="showFields()" th:field="*{numberOfDoors}" >
+                <option value="">--Select--</option>
+                <option value="2"> 2 </option>
+                <option value="4"> 4 </option>
+                <option value="5"> 5 </option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="label">Number of seats</label>
+            <select id="numberSeats" name="numberSeats" onchange="showFields()" th:field="*{numberOfSeats}">
+                <option value="">--Select--</option>
+                <option value="2"> 2 </option>
+                <option value="4"> 4 </option>
+                <option value="5"> 5 </option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col col-md-4">
+            <div class="button-holder d-flex">
+                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit car"/>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+</body>
+</html>
