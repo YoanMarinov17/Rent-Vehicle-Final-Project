@@ -27,7 +27,15 @@
 
                 <li class="dropdown nav-item" ><a  th:href="@{/services}" class="nav-link">Services</a>
                         <ul class="dropdown-content">
-                            <li class="nav-item"><a  th:href="@{/add-vehicle}" class="nav-link">Give vehicle for rent</a></li>
+                            <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
+                                <ul>
+                                    <li class="nav-item"><a  th:href="@{/add-car}" class="nav-link">Give car for rent</a>
+                                    <li class="nav-item"><a  th:href="@{/add-van}" class="nav-link">Give van for rent</a>
+                                    <li class="nav-item"><a  th:href="@{/add-truck}" class="nav-link">Give truck for rent</a>
+
+                                </ul>
+
+                            </li>
                             <li class="nav-item"><a  th:href="@{/car}" class="nav-link">Rent a vehicle</a></li>
 
                         </ul>

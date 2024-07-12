@@ -17,6 +17,10 @@ public class VehicleDto {
 
 
     @NotNull
+    private String brand;
+
+
+    @NotNull
     private TypeEnum type;
 
 
@@ -30,6 +34,9 @@ public class VehicleDto {
 
     @NotNull
     private EngineEnum engine;
+
+    private long userId;
+
 
 
 }

@@ -11,6 +11,10 @@
 
 </head>
 <body>
+
+
+
+
 <form id="vehicleForm"
       th:action="@{/add-vehicle}"
       th:object="${vehicleDto}"
@@ -27,7 +31,14 @@
 
     </select>
 
+
     <!-- Common Fields -->
+    <div>
+    <label for="model">Brand:</label>
+    <input  th:field="*{brand}" type="text" id="brand" name="brand">
+    </div>
+
+
     <div>
         <label for="model">Model:</label>
         <input  th:field="*{model}" type="text" id="model" name="model">
@@ -52,11 +63,10 @@
 
 
 
-
     <!-- Car Specific Fields -->
     <div id="carFields" class="vehicle-fields">
         <label for="carType">Car Type:</label>
-        <select id="carType" name="carType" onchange="showFields()" >
+        <select id="carType" name="carType" onchange="showFields()" th:field="*{carDto.carType}">
             <option value="">--Select--</option>
             <option th:each="type: ${allCarsType}"
                     th:value="${type}"
@@ -67,12 +77,12 @@
 
         <div class="form-group">
             <label for="" class="label">Horse Power</label>
-            <input type="text" class="form-control" id="horsePower" name="horsePower" >
+            <input type="text" class="form-control" id="horsePower" name="horsePower" th:field="*{carDto.horsePower}" >
         </div>
 
         <div class="form-group">
             <label for="" class="label">Number of doors</label>
-            <select id="numberDoors" name="numberDoors" onchange="showFields()" >
+            <select id="numberDoors" name="numberDoors" onchange="showFields()" th:field="*{carDto.numberOfDoors}" >
                 <option value="">--Select--</option>
                 <option value="2"> 2 </option>
                 <option value="4"> 4 </option>
@@ -83,7 +93,7 @@
 
         <div class="form-group">
             <label for="" class="label">Number of seats</label>
-            <select id="numberSeats" name="numberSeats" onchange="showFields()">
+            <select id="numberSeats" name="numberSeats" onchange="showFields()" th:field="*{carDto.numberOfSeats}">
                 <option value="">--Select--</option>
                 <option value="2"> 2 </option>
                 <option value="4"> 4 </option>
@@ -95,46 +105,52 @@
 
 
 
-
     <!-- Van Specific Fields -->
     <div id="vanFields" class="vehicle-fields">
         <!-- Add Van-specific fields here -->
         <div class="form-group">
             <label for="" class="label">Van - Number of seats</label>
-            <select id="numberOfVanSeats" name="numberOfVanSeats" onchange="showFields()" >
+            <select id="numberOfVanSeats" name="numberOfVanSeats" onchange="showFields()" th:field="*{vanDto.numberOfVanSeats}">
                 <option value="">--Select--</option>
-                <option value="VAN"> 6 </option>
-                <option value="VAN"> 8 </option>
-                <option value="VAN"> 10 </option>
-                <option value="VAN"> 12 </option>
+                <option value="6"> 6 </option>
+                <option value="8"> 8 </option>
+                <option value="10"> 10 </option>
+                <option value="12"> 12 </option>
             </select>
         </div>
-
-    </div>
-
-    <!-- Truck Specific Fields -->
-    <div id="truckFields" class="vehicle-fields">
-        <!-- Add Truck-specific fields here -->
-        <label for="" class="label">Up-Tones</label>
-        <select id="upTones" name="upTones" onchange="showFields()">
-            <option value="">--Select--</option>
-            <option value="TRUCK"> Up to 1,2t </option>
-            <option value="TRUCK"> Up to 12t </option>
-            <option value="TRUCk"> Up to 24t </option>
-        </select>
     </div>
 
 
+
+        <!-- Truck Specific Fields -->
+        <div id="truckFields" class="vehicle-fields">
+            <!-- Add Truck-specific fields here -->
+            <div class="form-group">
+            <label for="" class="label">Up-Tones</label>
+            <select id="upTones" name="upTones" onchange="showFields()" th:field="*{truckDto.upTones}">
+                <option value="">--Select--</option>
+                <option value="Up to 1,2t">Up to 1,2t</option>
+                <option value="Up to 12t">Up to 12t  </option>
+                <option value="Up to 24t">Up to 24t </option>
+            </select>
+            </div>
+        </div>
 
 
     <div class="row">
         <div class="col col-md-4">
             <div class="button-holder d-flex">
-                <input type="submit" class="btn btn-info btn-lg" value="Submit vehicle"/>
+                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit vehicle"/>
             </div>
         </div>
     </div>
+
+
 </form>
+
+
+
+
 
 <script>
     function showFields() {

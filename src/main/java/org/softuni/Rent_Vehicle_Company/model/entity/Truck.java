@@ -19,14 +19,6 @@ public class Truck extends Vehicle{
 
 
     @Column(name = "up_to_tones")
-            private Integer upTones;
+            private String upTones;
 
-    public Truck(TypeEnum type, String model, int year, EngineEnum engine, Integer upTones) {
-        super(TypeEnum.TRUCK, model, year, engine);
-        this.upTones = upTones;
-    }
-
-    public Truck(Integer upTones) {
-        this.upTones = upTones;
-    }
 }

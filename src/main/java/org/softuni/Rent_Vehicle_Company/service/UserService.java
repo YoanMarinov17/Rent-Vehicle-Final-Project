@@ -1,8 +1,12 @@
 package org.softuni.Rent_Vehicle_Company.service;
 
 import org.softuni.Rent_Vehicle_Company.model.dto.UserRegisterDto;
+import org.softuni.Rent_Vehicle_Company.model.entity.User;
+
+import java.util.Optional;
 
 public  interface UserService {
+
 
      void register(UserRegisterDto data);
 
@@ -12,4 +16,5 @@ public  interface UserService {
      public boolean emailExist(String email);
 
 
+    Optional<User> findById(long userId);
 }

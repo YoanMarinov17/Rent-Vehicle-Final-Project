@@ -22,12 +22,5 @@ public class Van extends Vehicle{
     @Column(name = "number_seats")
     private Integer numberOfVanSeats;
 
-    public Van(TypeEnum type, String model, int year, EngineEnum engine, Integer numberOfVanSeats) {
-        super(TypeEnum.VAN, model, year, engine);
-        this.numberOfVanSeats = numberOfVanSeats;
-    }
 
-    public Van(Integer numberOfVanSeats) {
-        this.numberOfVanSeats = numberOfVanSeats;
-    }
 }

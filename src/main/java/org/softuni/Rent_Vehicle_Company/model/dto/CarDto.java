@@ -10,7 +10,7 @@ import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CarDto extends VehicleDto {
+public class CarDto extends VehicleDto{
 
 
     @NotNull
@@ -22,9 +22,9 @@ public class CarDto extends VehicleDto {
 
 
     @NotNull
-    private Integer numberDoors;
+    private Integer numberOfDoors;
 
 
     @NotNull
-    private Integer numberSeats;
+    private Integer numberOfSeats;
 }

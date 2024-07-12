@@ -10,6 +10,8 @@ import org.softuni.Rent_Vehicle_Company.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,8 +33,7 @@ public class UserServiceImpl implements UserService {
 
         User user = modelMapper.map(data, User.class);
         user.setPassword(passwordEncoder.encode(data.getPassword()));
-//        Role role = roleRepository.findByName("USER");
-//        user.setRoles(Arrays.asList(role));
+
         userRepository.save(user);
     }
 
@@ -47,6 +48,11 @@ public class UserServiceImpl implements UserService {
     //Ako email-a съществува ще върне true / ако не съществува - false
     public boolean emailExist(String email) {
         return this.userRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public Optional<User> findById(long userId) {
+        return userRepository.findById(userId);
     }
 
 }

@@ -9,10 +9,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TruckDto extends VehicleDto{
-
+public class TruckDto  extends VehicleDto{
 
     @NotNull
-    private Integer upTones;
+    private String upTones;
 
 }

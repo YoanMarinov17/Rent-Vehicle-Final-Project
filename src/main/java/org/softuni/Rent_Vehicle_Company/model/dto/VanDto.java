@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class VanDto extends VehicleDto{
+public class VanDto  extends VehicleDto{
 
     @NotNull
-    private int numberSeats;
+    private Integer numberOfVanSeats;
 }

@@ -26,6 +26,10 @@ public abstract class Vehicle extends BaseEntity{
 
 
     @Column
+    private String brand;
+
+
+    @Column
     private String model;
 
 
@@ -36,6 +40,10 @@ public abstract class Vehicle extends BaseEntity{
     @Column
     @Enumerated(value = EnumType.STRING)
     private EngineEnum engine;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 
