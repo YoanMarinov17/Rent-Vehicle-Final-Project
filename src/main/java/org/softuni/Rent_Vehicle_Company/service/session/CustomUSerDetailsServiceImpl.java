@@ -2,10 +2,8 @@ package org.softuni.Rent_Vehicle_Company.service.session;
 
 import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,15 +14,17 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class CustomUSerDetailsServiceImpl implements UserDetailsService {
 
 
     private final UserRepository userRepository;
 
-    public UserDetailsServiceImpl(UserRepository userRepository) {
+    public CustomUSerDetailsServiceImpl(UserRepository userRepository) {
+
         this.userRepository = userRepository;
 
     }
+
 
 
 

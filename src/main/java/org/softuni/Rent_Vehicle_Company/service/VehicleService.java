@@ -6,9 +6,11 @@ import org.softuni.Rent_Vehicle_Company.model.dto.VanDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VehicleDto;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
 
+import java.security.Principal;
+
 public interface VehicleService {
 
-    void createCar(CarDto carDto);
-    void createVan(VanDto vanDto);
-    void createTruck(TruckDto truckDto);
+    void createCar(CarDto carDto, Principal principal);
+    void createVan(VanDto vanDto, Principal principal);
+    void createTruck(TruckDto truckDto, Principal principal);
 }

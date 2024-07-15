@@ -21,4 +21,7 @@ public class Truck extends Vehicle{
     @Column(name = "up_to_tones")
             private String upTones;
 
+    @Column(name = "is_reserved")
+    private Boolean isReserved;
+
 }

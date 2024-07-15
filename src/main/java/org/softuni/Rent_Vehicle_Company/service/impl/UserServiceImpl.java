@@ -20,12 +20,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
+
+
     private final RoleRepository roleRepository;
 
     public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, ModelMapper modelMapper, RoleRepository roleRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+
         this.roleRepository = roleRepository;
     }
 
@@ -50,9 +53,21 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findByEmail(email).isPresent();
     }
 
+
+
+
     @Override
-    public Optional<User> findById(long userId) {
+    public Optional<User> findById(Long userId) {
         return userRepository.findById(userId);
     }
+
+
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+
 
 }

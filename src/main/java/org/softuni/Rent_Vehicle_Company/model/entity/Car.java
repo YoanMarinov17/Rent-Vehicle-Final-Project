@@ -34,5 +34,14 @@ public class Car extends Vehicle{
     @Column(name = "number_seats")
     private Integer numberOfSeats;
 
+    @Column(name = "is_reserved")
+    private Boolean isReserved;
+
+
+    //Да се помисли как да се взима user-id през кола, камион, ван.
+    // Да се напрваи статистика на колата колко пъти е наемана.
+    // User, Moderator, Admin - Roles 
+
+
 
 }

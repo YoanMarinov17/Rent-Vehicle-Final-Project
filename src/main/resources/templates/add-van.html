@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Vehicle</title>
-    <style>
-        .vehicle-fields {
-            display: none;
-        }
-    </style>
 
 </head>
 <body>
@@ -73,38 +68,12 @@
     <div class="row">
         <div class="col col-md-4">
             <div class="button-holder d-flex">
-                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit vehicle"/>
+                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit van"/>
             </div>
         </div>
     </div>
 
 
 </form>
-
-
-
-
-
-<script>
-    function showFields() {
-        var vehicleType = document.getElementById("vehicleType").value;
-
-        // Hide all vehicle-specific fields
-        document.getElementById("carFields").style.display = "none";
-        document.getElementById("vanFields").style.display = "none";
-        document.getElementById("truckFields").style.display = "none";
-
-        // Show the selected vehicle's fields
-        if (vehicleType === "CAR") {
-            document.getElementById("carFields").style.display = "block";
-        } else if (vehicleType === "VAN") {
-            document.getElementById("vanFields").style.display = "block";
-        } else if (vehicleType === "TRUCK") {
-            document.getElementById("truckFields").style.display = "block";
-        } else {
-
-        }
-    }
-</script>
 </body>
 </html>

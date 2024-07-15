@@ -25,20 +25,29 @@
 
 
 
-                <li class="dropdown nav-item" ><a  th:href="@{/services}" class="nav-link">Services</a>
+                <li class="dropdown nav-item" ><a  th:href="@{/services}" class="nav-link">Rent out vehicle</a>
                         <ul class="dropdown-content">
                             <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
                                 <ul>
-                                    <li class="nav-item"><a  th:href="@{/add-car}" class="nav-link">Give car for rent</a>
-                                    <li class="nav-item"><a  th:href="@{/add-van}" class="nav-link">Give van for rent</a>
-                                    <li class="nav-item"><a  th:href="@{/add-truck}" class="nav-link">Give truck for rent</a>
-
+                                    <li class="nav-item"><a  th:href="@{/add-car}" class="nav-link">Cars</a>
+                                    <li class="nav-item"><a  th:href="@{/add-van}" class="nav-link">Vans</a>
+                                    <li class="nav-item"><a  th:href="@{/add-truck}" class="nav-link">Trucks</a>
                                 </ul>
-
                             </li>
-                            <li class="nav-item"><a  th:href="@{/car}" class="nav-link">Rent a vehicle</a></li>
-
                         </ul>
+                </li>
+
+                <li class="nav-item"><a  th:href="@{/car}" class="nav-link">Rent a vehicle</a>
+                    <ul class="dropdown-content">
+                        <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
+                            <ul>
+                                <li class="nav-item"><a  th:href="@{/cars}" class="nav-link">Rent a car</a>
+                                <li class="nav-item"><a  th:href="@{/vans}" class="nav-link">Rent a van</a>
+                                <li class="nav-item"><a  th:href="@{/trucks}" class="nav-link">Rent a truck</a>
+                            </ul>
+                        </li>
+                    </ul>
+
 
 
                 </li>

@@ -22,5 +22,8 @@ public class Van extends Vehicle{
     @Column(name = "number_seats")
     private Integer numberOfVanSeats;
 
+    @Column(name = "is_reserved")
+    private Boolean isReserved;
+
 
 }

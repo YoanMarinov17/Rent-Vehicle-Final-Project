@@ -7,13 +7,14 @@ import org.softuni.Rent_Vehicle_Company.model.dto.TruckDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VanDto;
 import org.softuni.Rent_Vehicle_Company.model.entity.*;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
+import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.UserService;
 import org.softuni.Rent_Vehicle_Company.service.VehicleService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
+import java.util.Optional;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
@@ -23,47 +24,68 @@ public class VehicleServiceImpl implements VehicleService {
 
     private final UserService userService;
 
+    private final UserRepository userRepository;
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelmapper, UserService userService) {
+
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, UserRepository userRepository) {
         this.vehicleRepository = vehicleRepository;
-        this.modelMapper = modelmapper;
-
+        this.modelMapper = modelMapper;
         this.userService = userService;
-    }
+        this.userRepository = userRepository;
 
+    }
 
 
     @Override
-    public void createCar(CarDto carDto) {
+    public void createCar(CarDto carDto, Principal principal) {
 
-        Car car = modelMapper.map(carDto, Car.class);
-        car.setType(TypeEnum.CAR);
+        String name = principal.getName();
 
-        vehicleRepository.save(car);
+        Optional<User> optionalUser = userRepository.findByUsername(name);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            Car car = modelMapper.map(carDto, Car.class);
+            car.setType(TypeEnum.CAR);
+            car.setUser(user);
+            vehicleRepository.save(car);
+        }
     }
 
     @Override
-    public void createVan(VanDto vanDto) {
+    public void createVan(VanDto vanDto, Principal principal) {
 
-        Van van = modelMapper.map(vanDto, Van.class);
-        van.setType(TypeEnum.VAN);
+        String name = principal.getName();
 
+        Optional<User> optionalUser = userRepository.findByUsername(name);
 
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            Van van = modelMapper.map(vanDto, Van.class);
+            van.setType(TypeEnum.VAN);
+            van.setUser(user);
+            vehicleRepository.save(van);
 
-        vehicleRepository.save(van);
-
+        }
     }
 
     @Override
-    public void createTruck(TruckDto truckDto) {
+    public void createTruck(TruckDto truckDto, Principal principal) {
 
-        Truck truck = modelMapper.map(truckDto, Truck.class);
+        String name = principal.getName();
 
-        truck.setType(TypeEnum.TRUCK);
+        Optional<User> optionalUser = userRepository.findByUsername(name);
 
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            Truck truck = modelMapper.map(truckDto, Truck.class);
+            truck.setType(TypeEnum.TRUCK);
+            truck.setUser(user);
+            vehicleRepository.save(truck);
 
+        }
 
-        vehicleRepository.save(truck);
     }
+
 
 }

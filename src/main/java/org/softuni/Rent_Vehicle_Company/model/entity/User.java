@@ -37,8 +37,17 @@ public class User extends BaseEntity {
         private List<Role> roles = new ArrayList<>();
 
 
-        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+        @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Vehicle> vehicles = new ArrayList<>();
+
+
+        @ElementCollection(fetch = FetchType.EAGER)
+        private List<GrantedAuthority> authorities;
+
+
+        public void setRole(Role role){
+                this.roles.add(role);
+        }
 
         public User() {}
 
