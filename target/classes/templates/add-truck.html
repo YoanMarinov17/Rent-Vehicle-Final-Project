@@ -3,10 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Truck</title>
+
     <style>
-        .vehicle-fields {
-            display: none;
+        body {
+            font-family: 'arial', sans-serif;
+            background-color: #feb47b;
+            margin: 3px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #fefefe, #01d28e);
         }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 30px;
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #333;
+            margin-bottom: 2px;
+            margin-top: 20px;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        button {
+            padding: 20px;
+            background-color: #feb47b;
+            color: #ffe8a1;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 30px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f3c17a;
+        }
+
+
+
+        @media (min-width: 600px) {
+            .container {
+                padding: 8px;
+            }
+
+            label {
+                font-size: 1.2em;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select {
+                padding: 8px;
+            }
+
+            button {
+                padding: 70px;
+            }
+        }
+
     </style>
 
 </head>
@@ -55,10 +151,10 @@
     </div>
 
 
-
     <!-- Truck Specific Fields -->
     <div id="truckFields" class="vehicle-fields">
         <!-- Add Truck-specific fields here -->
+
         <div class="form-group">
             <label for="" class="label">Up-Tones</label>
             <select id="upTones" name="upTones" onchange="showFields()" th:field="*{upTones}">
@@ -74,7 +170,7 @@
     <div class="row">
         <div class="col col-md-4">
             <div class="button-holder d-flex">
-                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit vehicle"/>
+                <input type="submit" id="submitButton" class="btn btn-info btn-lg" value="Submit truck"/>
             </div>
         </div>
     </div>
@@ -82,30 +178,5 @@
 
 </form>
 
-
-
-
-
-<script>
-    function showFields() {
-        var vehicleType = document.getElementById("vehicleType").value;
-
-        // Hide all vehicle-specific fields
-        document.getElementById("carFields").style.display = "none";
-        document.getElementById("vanFields").style.display = "none";
-        document.getElementById("truckFields").style.display = "none";
-
-        // Show the selected vehicle's fields
-        if (vehicleType === "CAR") {
-            document.getElementById("carFields").style.display = "block";
-        } else if (vehicleType === "VAN") {
-            document.getElementById("vanFields").style.display = "block";
-        } else if (vehicleType === "TRUCK") {
-            document.getElementById("truckFields").style.display = "block";
-        } else {
-
-        }
-    }
-</script>
 </body>
 </html>

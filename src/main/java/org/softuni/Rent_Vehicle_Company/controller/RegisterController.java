@@ -1,7 +1,10 @@
 package org.softuni.Rent_Vehicle_Company.controller;
 
 import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
 import org.softuni.Rent_Vehicle_Company.model.dto.UserRegisterDto;
+import org.softuni.Rent_Vehicle_Company.model.entity.Role;
+import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +24,13 @@ public class RegisterController {
     private final UserServiceImpl userService;
     private final UserRepository userRepository;
 
+    private final ModelMapper modelMapper;
+
     @Autowired
-    public RegisterController(UserServiceImpl userService, UserRepository userRepository) {
+    public RegisterController(UserServiceImpl userService, UserRepository userRepository, ModelMapper modelMapper) {
         this.userService = userService;
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     @ModelAttribute(name = "userRegisterDto")
@@ -79,8 +85,8 @@ public class RegisterController {
         //Show successful message for registration
         ra.addFlashAttribute("message", "Congratulations ! Your registration is ready.");
 
-// Register user in the DB.
-        userService.register(data);
+        // Register user in the DB.
+       User user =  userService.register(data);
 
         model.setViewName("redirect:/login");
         return model;

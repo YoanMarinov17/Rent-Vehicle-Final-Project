@@ -18,15 +18,22 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "roles")
-public class Role extends BaseEntity {
+public class Role  {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Enumerated(value = EnumType.STRING)
     @NotNull
     @Column(unique = true)
-    private UserRoleEnum name;
+    private UserRoleEnum role;
 
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "roles")
-    private List<User> users = new ArrayList<>();
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<User> users;
+
+
+
 }

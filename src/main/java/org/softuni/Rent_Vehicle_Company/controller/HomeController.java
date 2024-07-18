@@ -17,6 +17,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/singlecar")
+    public String singlecar(){
+
+        return "singlecar";
+    }
 
 
 
