@@ -14,4 +14,7 @@ public class TruckDto  extends VehicleDto{
     @NotNull
     private String upTones;
 
+    @NotNull
+    private Integer pricePerDay;
+
 }

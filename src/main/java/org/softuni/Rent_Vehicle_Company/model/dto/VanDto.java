@@ -13,4 +13,8 @@ public class VanDto  extends VehicleDto{
 
     @NotNull
     private Integer numberOfVanSeats;
+
+
+    @NotNull
+    private Integer pricePerDay;
 }

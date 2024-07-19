@@ -25,7 +25,7 @@
 
 
 
-                <li class="dropdown nav-item" ><a  th:href="@{/services}" class="nav-link">Rent out vehicle</a>
+                <li class="dropdown nav-item" ><a  sec:authorize="hasRole('MODERATOR')" th:href="@{/services}" class="nav-link">Rent out vehicle</a>
                         <ul class="dropdown-content">
                             <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
                                 <ul>
@@ -37,7 +37,7 @@
                         </ul>
                 </li>
 
-                <li class="dropdown nav-item"><a  th:href="@{/car}" class="nav-link">Rent a vehicle</a>
+                <li class="dropdown nav-item"><a  sec:authorize="hasRole('USER')" th:href="@{/car}" class="nav-link">Rent a vehicle</a>
                     <ul class="dropdown-content">
                         <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
                             <ul>
@@ -47,9 +47,18 @@
                             </ul>
                         </li>
                     </ul>
+                </li>
 
+                <li class="dropdown nav-item active"  ><a sec:authorize="hasRole('ADMIN')"  th:href="@{/admin}" class="nav-link">Admin</a>
+                    <ul class="dropdown-content">
 
+                        <ul>
+                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">View requests for car</a>
+                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">View requests for van</a>
+                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">View requests for truck</a>
+                        </ul>
 
+                    </ul>
                 </li>
 
                 <li class="nav-item"><a  th:href="@{/car}" class="nav-link">Cars</a></li>
@@ -62,9 +71,13 @@
 
 
 
-                <li class="nav-item"><a sec:authorize="!isAuthenticated()" th:href="@{/register}" class="nav-link">Register</a></li>
 
-                <li class="nav-item"><a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-link">Login</a></li>
+
+
+
+                <li class="nav-item active"><a sec:authorize="!isAuthenticated()" th:href="@{/register}" class="nav-link">Register</a></li>
+
+                <li class="nav-item active"><a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-link">Login</a></li>
 
 
                     <form class="nav-item active"

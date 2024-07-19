@@ -38,6 +38,11 @@ public class Car extends Vehicle{
     private Boolean isReserved;
 
 
+
+    @Column(name = "price_per_day")
+    private Integer pricePerDay;
+
+
     //Да се помисли как да се взима user-id през кола, камион, ван.
     // Да се напрваи статистика на колата колко пъти е наемана.
     // User, Moderator, Admin - Roles 

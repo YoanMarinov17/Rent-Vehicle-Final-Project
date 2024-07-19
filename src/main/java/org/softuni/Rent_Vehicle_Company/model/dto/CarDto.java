@@ -27,4 +27,7 @@ public class CarDto extends VehicleDto{
 
     @NotNull
     private Integer numberOfSeats;
+
+    @NotNull
+    private Integer pricePerDay;
 }

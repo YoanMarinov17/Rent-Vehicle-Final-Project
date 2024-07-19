@@ -1,6 +1,7 @@
 package org.softuni.Rent_Vehicle_Company.controller;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,17 @@ public class HomeController {
     @GetMapping("/car")
     public ModelAndView car() {
         return new ModelAndView("cars");
+    }
+
+
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String admin(){
+
+
+
+        return "admin";
     }
 
 

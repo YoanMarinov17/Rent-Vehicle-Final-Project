@@ -4,6 +4,107 @@
     <meta charset="UTF-8">
     <title>Add Car</title>
 
+    <style>
+        body {
+            font-family: 'arial', sans-serif;
+            background-color: #feb47b;
+            margin: 3px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #fefefe, #01d28e);
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 30px;
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #333;
+            margin-bottom: 2px;
+            margin-top: 20px;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        button {
+            padding: 20px;
+            background-color: #feb47b;
+            color: #ffe8a1;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 30px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f3c17a;
+        }
+
+
+
+        @media (min-width: 600px) {
+            .container {
+                padding: 8px;
+            }
+
+            label {
+                font-size: 1.2em;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            select {
+                padding: 8px;
+            }
+
+            button {
+                padding: 70px;
+            }
+        }
+
+    </style>
+
 
 </head>
 <body>
@@ -63,12 +164,12 @@
 
 
         <div class="form-group">
-            <label for="" class="label">Horse Power</label>
+            <label for="" class="label">Horse Power :</label>
             <input type="text" class="form-control" id="horsePower" name="horsePower" th:field="*{horsePower}" >
         </div>
 
         <div class="form-group">
-            <label for="" class="label">Number of doors</label>
+            <label for="" class="label">Number of doors :</label>
             <select id="numberDoors" name="numberDoors" onchange="showFields()" th:field="*{numberOfDoors}" >
                 <option value="">--Select--</option>
                 <option value="2"> 2 </option>
@@ -79,7 +180,7 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="label">Number of seats</label>
+            <label for="" class="label">Number of seats :</label>
             <select id="numberSeats" name="numberSeats" onchange="showFields()" th:field="*{numberOfSeats}">
                 <option value="">--Select--</option>
                 <option value="2"> 2 </option>
@@ -88,6 +189,13 @@
             </select>
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="" class="label">Price per day :</label>
+        <input type="text" class="form-control" id="pricePerDay" name="pricePerDay" th:field="*{pricePerDay}" >
+    </div>
+
+
 
 
     <div class="row">

@@ -3503,7 +3503,8 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  margin-right: 18rem;
+  margin-right: 10rem;
+  margin-left: 0;
   font-size: 2rem;
   line-height: inherit;
   white-space: nowrap; }

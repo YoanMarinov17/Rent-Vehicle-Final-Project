@@ -45,14 +45,18 @@ public class UserServiceImpl implements UserService {
         if (isFirstUser) {
             // Assign ADMIN role
             Role admin = roleRepository.findByRole(UserRoleEnum.ADMIN);
+            Role moderator = roleRepository.findByRole(UserRoleEnum.MODERATOR);
+            Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
 
-            user.setRoles(List.of(admin));
+            user.setRoles(List.of(admin, moderator, userRole));
+
 
 
         } else if (isSecondUser) {
 
             Role moderator = roleRepository.findByRole(UserRoleEnum.MODERATOR);
-            user.setRoles(List.of(moderator));
+            Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
+            user.setRoles(List.of(moderator, userRole));
         } else {
 
             Role userRole = roleRepository.findByRole(UserRoleEnum.USER);

@@ -24,4 +24,7 @@ public class Truck extends Vehicle{
     @Column(name = "is_reserved")
     private Boolean isReserved;
 
+    @Column(name = "price_per_day")
+    private Integer pricePerDay;
+
 }
