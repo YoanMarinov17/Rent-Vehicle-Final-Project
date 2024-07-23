@@ -166,6 +166,8 @@ figure {
 
 img {
   vertical-align: middle;
+  height: auto;
+  width: 100%;
   border-style: none; }
 
 svg {
@@ -446,23 +448,23 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
-.container {
+.car-container {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto; }
   @media (min-width: 576px) {
-    .container {
+    .car-container {
       max-width: 540px; } }
   @media (min-width: 768px) {
-    .container {
+    .car-container {
       max-width: 720px; } }
   @media (min-width: 992px) {
-    .container {
+    .car-container {
       max-width: 960px; } }
   @media (min-width: 1200px) {
-    .container {
+    .car-container {
       max-width: 1140px; } }
 
 .container-fluid {
@@ -3485,7 +3487,7 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem; }
-  .navbar > .container,
+  .navbar > .car-container,
   .navbar > .container-fluid {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3564,7 +3566,7 @@ input[type="button"].btn-block {
   background-size: 100% 100%; }
 
 @media (max-width: 575.98px) {
-  .navbar-expand-sm > .container,
+  .navbar-expand-sm > .car-container,
   .navbar-expand-sm > .container-fluid {
     padding-right: 0;
     padding-left: 0; } }
@@ -3588,7 +3590,7 @@ input[type="button"].btn-block {
       .navbar-expand-sm .navbar-nav .nav-link {
         padding-right: 0.5rem;
         padding-left: 0.5rem; }
-    .navbar-expand-sm > .container,
+    .navbar-expand-sm > .car-container,
     .navbar-expand-sm > .container-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; }
@@ -3602,7 +3604,7 @@ input[type="button"].btn-block {
       display: none; } }
 
 @media (max-width: 767.98px) {
-  .navbar-expand-md > .container,
+  .navbar-expand-md > .car-container,
   .navbar-expand-md > .container-fluid {
     padding-right: 0;
     padding-left: 0; } }
@@ -3626,7 +3628,7 @@ input[type="button"].btn-block {
       .navbar-expand-md .navbar-nav .nav-link {
         padding-right: 0.5rem;
         padding-left: 0.5rem; }
-    .navbar-expand-md > .container,
+    .navbar-expand-md > .car-container,
     .navbar-expand-md > .container-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; }
@@ -3640,7 +3642,7 @@ input[type="button"].btn-block {
       display: none; } }
 
 @media (max-width: 991.98px) {
-  .navbar-expand-lg > .container,
+  .navbar-expand-lg > .car-container,
   .navbar-expand-lg > .container-fluid {
     padding-right: 0;
     padding-left: 0; } }
@@ -3664,7 +3666,7 @@ input[type="button"].btn-block {
       .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 0.5rem;
         padding-left: 0.5rem; }
-    .navbar-expand-lg > .container,
+    .navbar-expand-lg > .car-container,
     .navbar-expand-lg > .container-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; }
@@ -3678,7 +3680,7 @@ input[type="button"].btn-block {
       display: none; } }
 
 @media (max-width: 1199.98px) {
-  .navbar-expand-xl > .container,
+  .navbar-expand-xl > .car-container,
   .navbar-expand-xl > .container-fluid {
     padding-right: 0;
     padding-left: 0; } }
@@ -3702,7 +3704,7 @@ input[type="button"].btn-block {
       .navbar-expand-xl .navbar-nav .nav-link {
         padding-right: 0.5rem;
         padding-left: 0.5rem; }
-    .navbar-expand-xl > .container,
+    .navbar-expand-xl > .car-container,
     .navbar-expand-xl > .container-fluid {
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; }
@@ -3723,7 +3725,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start; }
-  .navbar-expand > .container,
+  .navbar-expand > .car-container,
   .navbar-expand > .container-fluid {
     padding-right: 0;
     padding-left: 0; }
@@ -3737,7 +3739,7 @@ input[type="button"].btn-block {
     .navbar-expand .navbar-nav .nav-link {
       padding-right: 0.5rem;
       padding-left: 0.5rem; }
-  .navbar-expand > .container,
+  .navbar-expand > .car-container,
   .navbar-expand > .container-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap; }
@@ -8154,7 +8156,7 @@ a.text-dark:hover, a.text-dark:focus {
     size: a3; }
   body {
     min-width: 992px !important; }
-  .container {
+  .car-container {
     min-width: 992px !important; }
   .navbar {
     display: none; }
@@ -8741,7 +8743,7 @@ h1, h2, h3, h4, h5,
   background: #fff; }
   .car-wrap .img {
     width: 100%;
-    height: 220px; }
+    height: auto; }
   .car-wrap .text {
     border-top: none;
     padding: 20px 30px 30px; }

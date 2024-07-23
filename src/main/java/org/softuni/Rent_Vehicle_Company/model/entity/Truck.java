@@ -27,4 +27,7 @@ public class Truck extends Vehicle{
     @Column(name = "price_per_day")
     private Integer pricePerDay;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
 }

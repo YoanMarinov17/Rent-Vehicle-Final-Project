@@ -30,4 +30,8 @@ public class CarDto extends VehicleDto{
 
     @NotNull
     private Integer pricePerDay;
+
+
+    @NotNull
+    private String imageUrl;
 }

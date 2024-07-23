@@ -17,4 +17,8 @@ public class VanDto  extends VehicleDto{
 
     @NotNull
     private Integer pricePerDay;
+
+
+    @NotNull
+    private String imageUrl;
 }

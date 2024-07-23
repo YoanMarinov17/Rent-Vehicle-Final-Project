@@ -12,8 +12,7 @@ import org.softuni.Rent_Vehicle_Company.model.enums.EngineEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
-import org.softuni.Rent_Vehicle_Company.service.UserService;
-import org.softuni.Rent_Vehicle_Company.service.VehicleService;
+import org.softuni.Rent_Vehicle_Company.service.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -48,11 +47,21 @@ public class VehicleController {
     private final VehicleService vehicleService;
     private final UserRepository userRepository;
 
+    private final CarService carService;
 
-    public VehicleController(VehicleService vehicleService, UserRepository userRepository) {
+    private final VanService vanService;
+
+    private final TruckService truckService;
+
+
+    public VehicleController(VehicleService vehicleService, UserRepository userRepository, CarService carService, VanService vanService, TruckService truckService) {
         this.vehicleService = vehicleService;
 
         this.userRepository = userRepository;
+        this.carService = carService;
+        this.vanService = vanService;
+
+        this.truckService = truckService;
     }
 
 
@@ -70,7 +79,7 @@ public class VehicleController {
         vehicleService.createCar(carDto, principal);
 
 
-        return "redirect:/index";
+        return "redirect:/cars";
     }
 
 
@@ -90,7 +99,7 @@ public class VehicleController {
     public String createVan(VanDto vanDto, Principal principal) {
 
         vehicleService.createVan(vanDto,principal);
-        return "redirect:/index";
+        return "redirect:/vans";
     }
 
 
@@ -113,7 +122,29 @@ public class VehicleController {
 
         vehicleService.createTruck(truckDto, principal);
 
-        return "redirect:/index";
+        return "redirect:/trucks";
+    }
+
+
+
+
+    @GetMapping("/cars")
+    public String getAllCars(Model model) {
+
+        model.addAttribute("allCars", carService.getAllCarSummary());
+        return "cars";
+    }
+    @GetMapping("/vans")
+    public String getAllVans(Model model) {
+
+        model.addAttribute("allVans", vanService.getAllVansSummary());
+        return "vans";
+    }
+    @GetMapping("/trucks")
+    public String getAllTrucks(Model model) {
+
+        model.addAttribute("allTrucks", truckService.getAllTrucksSummary());
+        return "trucks";
     }
 
 

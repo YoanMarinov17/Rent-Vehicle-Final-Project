@@ -12,12 +12,12 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             background: linear-gradient(to right, #fefefe, #01d28e);
         }
 
-        .container {
+        .car-container {
             background-color: #fff;
             padding: 30px;
             border-radius: 12px;
@@ -29,7 +29,7 @@
 
         h1 {
             text-align: center;
-            color: #333;
+            color: #fefefe;
             font-weight: 700;
             margin-bottom: 30px;
 
@@ -41,16 +41,17 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         label {
             color: #333;
+            font-family: 'Varela Round', Helvetica, Arial, sans-serif;
             margin-bottom: 2px;
             margin-top: 20px;
             display: block;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 18px;
         }
 
         input[type="text"],
@@ -84,8 +85,8 @@
 
 
         @media (min-width: 600px) {
-            .container {
-                padding: 8px;
+            .car-container {
+                padding: 4px;
             }
 
             label {
@@ -99,7 +100,7 @@
             }
 
             button {
-                padding: 70px;
+                padding: 30px;
             }
         }
 
@@ -193,6 +194,11 @@
     <div class="form-group">
         <label for="" class="label">Price per day :</label>
         <input type="text" class="form-control" id="pricePerDay" name="pricePerDay" th:field="*{pricePerDay}" >
+    </div>
+
+    <div class="form-group">
+        <label for="" class="label">Image URL :</label>
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl" th:field="*{imageUrl}" >
     </div>
 
 

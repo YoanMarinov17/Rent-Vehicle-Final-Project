@@ -5,8 +5,10 @@ import org.modelmapper.ModelMapper;
 import org.softuni.Rent_Vehicle_Company.model.dto.CarDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.TruckDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VanDto;
+import org.softuni.Rent_Vehicle_Company.model.dto.VehicleDto;
 import org.softuni.Rent_Vehicle_Company.model.entity.*;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
+import org.softuni.Rent_Vehicle_Company.repository.CarRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.UserService;
@@ -14,6 +16,7 @@ import org.softuni.Rent_Vehicle_Company.service.VehicleService;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,10 +27,12 @@ public class VehicleServiceImpl implements VehicleService {
 
     private final UserService userService;
 
+
+
     private final UserRepository userRepository;
 
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, UserRepository userRepository) {
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, CarRepository carRepository, UserRepository userRepository) {
         this.vehicleRepository = vehicleRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
@@ -86,6 +91,9 @@ public class VehicleServiceImpl implements VehicleService {
         }
 
     }
+
+
+
 
 
 }

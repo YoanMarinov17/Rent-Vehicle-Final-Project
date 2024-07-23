@@ -13,7 +13,7 @@ body{
   padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-.container{
+.car-container{
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -21,12 +21,12 @@ body{
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
-.container .title{
+.car-container .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
-.container .title::before{
+.car-container .title::before{
   content: "";
   position: absolute;
   left: 0;
@@ -146,7 +146,7 @@ form .input-box span.details{
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
  @media(max-width: 584px){
- .container{
+ .car-container{
   max-width: 100%;
 }
 form .user-details .input-box{
@@ -165,7 +165,7 @@ form .user-details .input-box{
   }
   }
   @media(max-width: 459px){
-  .container .content .category{
+  .car-container .content .category{
     flex-direction: column;
   }
 

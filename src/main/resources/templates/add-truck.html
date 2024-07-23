@@ -17,7 +17,7 @@
             background: linear-gradient(to right, #fefefe, #01d28e);
         }
 
-        .container {
+        .car-container {
             background-color: #fff;
             padding: 30px;
             border-radius: 12px;
@@ -41,7 +41,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         label {
@@ -84,7 +84,7 @@
 
 
         @media (min-width: 600px) {
-            .container {
+            .car-container {
                 padding: 8px;
             }
 
@@ -95,7 +95,7 @@
             input[type="text"],
             input[type="number"],
             select {
-                padding: 8px;
+                padding: 4px;
             }
 
             button {
@@ -170,6 +170,11 @@
     <div class="form-group">
         <label for="" class="label">Price per day :</label>
         <input type="text" class="form-control" id="pricePerDay" name="pricePerDay" th:field="*{pricePerDay}" >
+    </div>
+
+    <div class="form-group">
+        <label for="" class="label">Image :</label>
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl" th:field="*{imageUrl}" >
     </div>
 
 
