@@ -40,7 +40,8 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(data.getPassword()));
 
         boolean isFirstUser = userRepository.count() == 0 ;
-        boolean isSecondUser = userRepository.count() == 1;
+        boolean isSecondUser = userRepository.count() == 1 || userRepository.count() == 2   ;
+    ;
 
         if (isFirstUser) {
             // Assign ADMIN role
@@ -57,8 +58,8 @@ public class UserServiceImpl implements UserService {
             Role moderator = roleRepository.findByRole(UserRoleEnum.MODERATOR);
             Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
             user.setRoles(List.of(moderator, userRole));
-        } else {
 
+        } else {
             Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
             user.setRoles(List.of(userRole));
         }

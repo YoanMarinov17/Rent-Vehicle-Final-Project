@@ -54,6 +54,8 @@ public class User extends BaseEntity {
         private List<GrantedAuthority> authorities;
 
 
+
+
         public void setRole(Role role){
                 this.roles.add(role);
         }

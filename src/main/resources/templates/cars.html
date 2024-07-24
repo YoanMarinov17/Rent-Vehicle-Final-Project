@@ -34,14 +34,14 @@
     				<div class="car-wrap rounded ftco-animate">
     					<div class="img rounded d-flex align-items-end"><img th:src="@{${car.imageUrl}}" alt="Car Image" /></div>
     					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html" th:text="*{brand}"></a></h2>
+    						<h2 class="mb-0"><a  th:text="*{brand}"></a></h2>
     						<div class="d-flex mb-3">
                                 <div class="car-type">• Model: <span th:text="*{model}"></span></div><br>
 	    						<p class="price ml-auto" th:text="'$' + *{pricePerDay} + ' per day'"></p>
     						</div>
 
     						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
-                                <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                <a th:href="@{/car-details/{id}(id=*{id})}" class="btn btn-secondary py-2 ml-1">Details</a></p>
     					</div>
     				</div>
     			</div>

@@ -92,8 +92,14 @@ public class VehicleServiceImpl implements VehicleService {
 
     }
 
+    @Override
+    public void deleteOffer(Long id) {
 
+        Optional<Vehicle> optionalVan = vehicleRepository.findById(id);
 
+        optionalVan.ifPresent(vehicleRepository::delete);
+
+    }
 
 
 }
