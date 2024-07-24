@@ -2,6 +2,7 @@ package org.softuni.Rent_Vehicle_Company.model.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,12 +37,16 @@ public abstract class Vehicle extends BaseEntity{
     @Column
     private int year;
 
+    @Column(name = "image_url")
+    @Size(min = 5, max = 1232132132)
+    private String imageUrl;
+
 
     @Column
     @Enumerated(value = EnumType.STRING)
     private EngineEnum engine;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 

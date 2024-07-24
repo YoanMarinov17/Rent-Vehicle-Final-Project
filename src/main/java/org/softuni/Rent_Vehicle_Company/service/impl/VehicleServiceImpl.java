@@ -16,8 +16,11 @@ import org.softuni.Rent_Vehicle_Company.service.VehicleService;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
@@ -27,15 +30,16 @@ public class VehicleServiceImpl implements VehicleService {
 
     private final UserService userService;
 
-
+    private final CarRepository carRepository;
 
     private final UserRepository userRepository;
 
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, CarRepository carRepository, UserRepository userRepository) {
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, CarRepository carRepository, CarRepository carRepository1, UserRepository userRepository) {
         this.vehicleRepository = vehicleRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
+        this.carRepository = carRepository1;
         this.userRepository = userRepository;
 
     }
@@ -93,12 +97,23 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public void deleteOffer(Long id) {
+    public List<Vehicle> getAllVehiclesByUser(Principal principal) {
 
-        Optional<Vehicle> optionalVan = vehicleRepository.findById(id);
 
-        optionalVan.ifPresent(vehicleRepository::delete);
+        Optional<User> optionalUser = userRepository.findByUsername(principal.getName());
+        List<Vehicle> allVehicles = new ArrayList<>();
 
+
+        if (optionalUser.isPresent()){
+            long id = optionalUser.get().getId();
+            allVehicles = vehicleRepository.findAll().stream().filter(vehicle -> vehicle.getUser().getId() == id).toList();
+
+        }
+
+
+
+
+       return allVehicles;
     }
 
 

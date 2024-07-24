@@ -10,4 +10,6 @@ public interface TruckService {
     List<Truck> getAllTrucksSummary();
 
     Truck getTruckDetails(Long id) throws ChangeSetPersister.NotFoundException;
+
+    void deleteOffer(Long id);
 }

@@ -18,11 +18,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/singlecar")
-    public String singlecar(){
 
-        return "singlecar";
-    }
 
 
 
@@ -57,8 +53,6 @@ public class HomeController {
     @GetMapping("/admin")
     @PreAuthorize("hasRole('ADMIN')")
     public String admin(){
-
-
 
         return "admin";
     }

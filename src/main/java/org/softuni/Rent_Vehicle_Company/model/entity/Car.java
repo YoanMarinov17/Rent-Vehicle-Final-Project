@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,14 +43,6 @@ public class Car extends Vehicle{
     @Column(name = "price_per_day")
     private Integer pricePerDay;
 
-
-    @Column(name = "image_url")
-    private String imageUrl;
-
-
-    //Да се помисли как да се взима user-id през кола, камион, ван.
-    // Да се напрваи статистика на колата колко пъти е наемана.
-    // User, Moderator, Admin - Roles 
 
 
 

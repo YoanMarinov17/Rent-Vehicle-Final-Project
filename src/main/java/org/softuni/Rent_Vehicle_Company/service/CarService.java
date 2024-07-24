@@ -13,4 +13,6 @@ public interface CarService {
     List<Car> getAllCarSummary();
 
     Car getCarDetails(Long id) throws ChangeSetPersister.NotFoundException;
+
+    void deleteOffer(Long id);
 }

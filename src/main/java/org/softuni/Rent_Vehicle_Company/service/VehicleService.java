@@ -20,5 +20,5 @@ public interface VehicleService {
     void createTruck(TruckDto truckDto, Principal principal);
 
 
-    void deleteOffer(Long id);
+    List<Vehicle> getAllVehiclesByUser(Principal principal);
 }

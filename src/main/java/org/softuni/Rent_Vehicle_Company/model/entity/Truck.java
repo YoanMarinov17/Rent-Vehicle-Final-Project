@@ -4,6 +4,7 @@ package org.softuni.Rent_Vehicle_Company.model.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,7 +28,6 @@ public class Truck extends Vehicle{
     @Column(name = "price_per_day")
     private Integer pricePerDay;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+
 
 }

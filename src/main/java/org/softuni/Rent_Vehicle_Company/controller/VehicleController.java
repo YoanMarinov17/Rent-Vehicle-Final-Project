@@ -48,5 +48,15 @@ public class VehicleController {
     }
 
 
+    @GetMapping("/my-vehicles")
+    public String getAllVehicles(Principal principal, Model model){
+
+        model.addAttribute("allVehicles",vehicleService.getAllVehiclesByUser(principal));
+
+
+        return "my-vehicles";
+    }
+
+
 
 }
