@@ -41,7 +41,7 @@ public abstract class Vehicle extends BaseEntity{
     @Enumerated(value = EnumType.STRING)
     private EngineEnum engine;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 

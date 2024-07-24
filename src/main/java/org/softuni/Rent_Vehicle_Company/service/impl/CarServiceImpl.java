@@ -3,6 +3,7 @@ package org.softuni.Rent_Vehicle_Company.service.impl;
 import jakarta.persistence.Cache;
 import org.softuni.Rent_Vehicle_Company.model.dto.CarDto;
 import org.softuni.Rent_Vehicle_Company.model.entity.Car;
+import org.softuni.Rent_Vehicle_Company.model.entity.Van;
 import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
 import org.softuni.Rent_Vehicle_Company.repository.CarRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
@@ -18,7 +19,6 @@ import java.util.Optional;
 
 @Service
 public class CarServiceImpl implements CarService {
-
 
 
     private final CarRepository carRepository;
@@ -41,9 +41,15 @@ public class CarServiceImpl implements CarService {
         Optional<Car> optionalCar = carRepository.findById(id);
 
 
-        return  optionalCar.orElseThrow(ChangeSetPersister.NotFoundException::new);
+        return optionalCar.orElseThrow(ChangeSetPersister.NotFoundException::new);
 
 
+    }
+
+    @Override
+    public void deleteOffer(Long id) {
+
+        carRepository.deleteById(id);
 
     }
 }

@@ -46,11 +46,8 @@ public class VanServiceImpl implements VanService {
     @Override
     public void deleteOffer(Long id) {
 
-        Optional<Van> optionalVan = vanRepository.findById(id);
+        vanRepository.deleteById(id);
 
-        optionalVan.ifPresent(van -> van.setUser(null));
-
-        optionalVan.ifPresent(vanRepository::delete);
 
     }
 }

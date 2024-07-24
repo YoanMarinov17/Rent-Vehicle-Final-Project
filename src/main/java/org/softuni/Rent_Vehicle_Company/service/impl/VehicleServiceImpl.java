@@ -27,15 +27,16 @@ public class VehicleServiceImpl implements VehicleService {
 
     private final UserService userService;
 
-
+    private final CarRepository carRepository;
 
     private final UserRepository userRepository;
 
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, CarRepository carRepository, UserRepository userRepository) {
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, CarRepository carRepository, CarRepository carRepository1, UserRepository userRepository) {
         this.vehicleRepository = vehicleRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
+        this.carRepository = carRepository1;
         this.userRepository = userRepository;
 
     }
@@ -92,14 +93,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     }
 
-    @Override
-    public void deleteOffer(Long id) {
 
-        Optional<Vehicle> optionalVan = vehicleRepository.findById(id);
-
-        optionalVan.ifPresent(vehicleRepository::delete);
-
-    }
 
 
 }
