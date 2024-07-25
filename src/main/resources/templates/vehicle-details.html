@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th='http://www.thymeleaf.org' xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        margin: 20px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .car-detail {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .car-detail:last-child {
+        border-bottom: none;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .value {
+        color: #333;
+    }
+
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+
+    }
+
+
+
+    .delete {
+        background-color: #f44336; /* Red */
+    }
+
+    .delete:hover {
+        background-color: #da190b;
+    }
+</style>
+<body>
+
+
+
+<div class="card"
+     th:object="${vehicleDetails}">
+
+
+    <div class="card-header">
+        <h2>Vehicle Details</h2>
+    </div>
+    <div class="card-body" >
+
+        <div class="card-image">
+            <img th:src="@{${vehicleDetails.imageUrl}}"alt="Car Image">
+        </div>
+
+
+        <div class="car-detail">
+            <span class="label">Brand:  <span class="value" th:text="${vehicleDetails.brand}"></span></span>
+
+        </div>
+
+
+
+        <div class="car-detail">
+            <span class="label">Model: <span class="value" th:text="${vehicleDetails.model}"></span></span>
+
+        </div>
+
+
+        <div class="car-detail">
+            <span class="label">Year: <span class="value" th:text="${vehicleDetails.year}"></span></span>
+
+        </div>
+
+        <div class="car-detail">
+            <span class="label">Engine Type: <span class="value" th:text="${vehicleDetails.engine}"></span></span>
+
+        </div>
+
+        <form class="button-container"
+              sec:authorize="hasRole('MODERATOR')"
+              th:method="delete"
+              th:action="@{/vehicle-details/{id}(id=*{id})}">
+            <button class="btn delete">Delete offer</button>
+
+        </form>
+
+
+
+
+
+
+    </div>
+</div>
+</body>
+</html>
