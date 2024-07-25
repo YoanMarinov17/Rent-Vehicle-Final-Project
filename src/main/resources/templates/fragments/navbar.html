@@ -50,7 +50,10 @@
                     </ul>
                 </li>
 
-                <li class="dropdown nav-item active"  ><a sec:authorize="hasRole('ADMIN')"  th:href="@{/admin}" class="nav-link">Admin</a>
+                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR', 'USER')" th:href="@{/my-vehicles}" class="nav-link">My vehicles</a></li>
+
+
+                <li class="dropdown nav-item active"  ><a sec:authorize="hasAnyRole('ADMIN')" th:href="@{/admin}" class="nav-link">Admin</a>
                     <ul class="dropdown-content">
 
                         <ul>

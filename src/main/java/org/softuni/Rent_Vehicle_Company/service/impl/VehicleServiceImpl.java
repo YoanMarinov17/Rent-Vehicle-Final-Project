@@ -13,6 +13,7 @@ import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.UserService;
 import org.softuni.Rent_Vehicle_Company.service.VehicleService;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -104,16 +105,29 @@ public class VehicleServiceImpl implements VehicleService {
         List<Vehicle> allVehicles = new ArrayList<>();
 
 
-        if (optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             long id = optionalUser.get().getId();
             allVehicles = vehicleRepository.findAll().stream().filter(vehicle -> vehicle.getUser().getId() == id).toList();
 
         }
 
+        return allVehicles;
+    }
 
 
 
-       return allVehicles;
+    @Override
+    public Vehicle getVehicleDetails(Long id) throws ChangeSetPersister.NotFoundException {
+        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(id);
+
+
+        return optionalVehicle.orElseThrow(ChangeSetPersister.NotFoundException::new);
+    }
+
+    @Override
+    public void deleteOffer(Long id) {
+
+        vehicleRepository.deleteById(id);
     }
 
 

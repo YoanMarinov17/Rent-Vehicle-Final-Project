@@ -37,10 +37,6 @@ public abstract class Vehicle extends BaseEntity{
     @Column
     private int year;
 
-    @Column(name = "image_url")
-    @Size(min = 5, max = 1232132132)
-    private String imageUrl;
-
 
     @Column
     @Enumerated(value = EnumType.STRING)
@@ -49,6 +45,10 @@ public abstract class Vehicle extends BaseEntity{
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "image_url")
+    @Size(min = 5, max = 1232132132)
+    private String imageUrl;
 
 
 

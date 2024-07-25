@@ -7,6 +7,20 @@
 
 <head th:replace="fragments/commons::head"></head>
 
+<style>
+
+    .btn{
+
+        padding: 10px 60px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+
+    }
+</style>
+
 <body>
 
 <nav th:replace="fragments/navbar::nav"></nav>
@@ -41,11 +55,13 @@
                         </div>
 
 
-<!--                        <p> <a th:href="@{/car-details/{id}(id=*{id})}" class="btn btn-secondary py-2 ml-1">Details</a></p>-->
+                        <p> <a th:href="@{/vehicle-details/{id}(id=*{vehicle.id})}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+
+
                     </div>
                 </div>
             </div>
-        </div>zz
+        </div>
     </div>
 </section>
 
@@ -76,6 +92,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

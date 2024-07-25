@@ -13,6 +13,7 @@ import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.service.*;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -54,7 +55,27 @@ public class VehicleController {
         model.addAttribute("allVehicles",vehicleService.getAllVehiclesByUser(principal));
 
 
+
         return "my-vehicles";
+    }
+
+//
+    @GetMapping("/vehicle-details/{id}")
+    public String carDetails(@PathVariable("id") Long id,
+                             Model model) throws ChangeSetPersister.NotFoundException {
+
+        model.addAttribute("vehicleDetails", vehicleService.getVehicleDetails(id));
+
+        return "vehicle-details";
+    }
+
+
+    @DeleteMapping("/vehicle-details/{id}")
+    public String deleteCar(@PathVariable("id") Long id) {
+
+        vehicleService.deleteOffer(id);
+
+        return "redirect:/my-vehicles";
     }
 
 

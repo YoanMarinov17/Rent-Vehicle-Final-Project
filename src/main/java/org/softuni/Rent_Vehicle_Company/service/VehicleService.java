@@ -9,6 +9,7 @@ import org.softuni.Rent_Vehicle_Company.model.entity.Truck;
 import org.softuni.Rent_Vehicle_Company.model.entity.Van;
 import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
+import org.springframework.data.crossstore.ChangeSetPersister;
 
 import java.security.Principal;
 import java.util.List;
@@ -21,4 +22,8 @@ public interface VehicleService {
 
 
     List<Vehicle> getAllVehiclesByUser(Principal principal);
+
+    Vehicle getVehicleDetails(Long id) throws ChangeSetPersister.NotFoundException;
+
+    void deleteOffer(Long id);
 }
