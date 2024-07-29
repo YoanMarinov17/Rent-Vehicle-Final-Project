@@ -42,12 +42,12 @@ public class User extends BaseEntity {
 
 
 
-
-
-
-
         @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
         private List<Vehicle> vehicles = new ArrayList<>();
+
+
+        @OneToMany(mappedBy = "user")
+        private List<Reservation> reservations = new ArrayList<>();
 
 
         @ElementCollection(fetch = FetchType.EAGER)

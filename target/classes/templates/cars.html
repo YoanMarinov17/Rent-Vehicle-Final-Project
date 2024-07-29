@@ -27,8 +27,7 @@
     	<div class="car-container"
 
 			 th:each="car : ${allCars}"
-			 th:object="${car}"
-		>
+			 th:object="${car}">
     		<div class="row">
     			<div class="col-md-4">
     				<div class="car-wrap rounded ftco-animate">
@@ -40,8 +39,8 @@
 	    						<p class="price ml-auto" th:text="'$' + *{pricePerDay} + ' per day'"></p>
     						</div>
 
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
-                                <a th:href="@{/car-details/{id}(id=*{id})}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+    						<p class="d-flex mb-0 d-block"><a th:href="@{/reservation?vehicleID={vehicleID}(vehicleID=*{id})}" class="btn btn-primary py-2 mr-1">Book now</a>
+                                <a th:href="@{/cars/car-details/{id}(id=*{id})}" class="btn btn-secondary py-2 ml-1">Details</a></p>
     					</div>
     				</div>
     			</div>

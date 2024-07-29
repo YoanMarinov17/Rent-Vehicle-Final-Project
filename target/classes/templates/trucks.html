@@ -40,7 +40,10 @@
 	    						<p class="price ml-auto" th:text="'$' + *{pricePerDay} + ' per day'"></p>
     						</div>
 
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
+    						<p class="d-flex mb-0 d-block"><a th:href="@{/reservation?vehicleID={vehicleID}(vehicleID=*{id})}" class="btn btn-primary py-2 mr-1">Book now</a>
+
+
+
                                 <a th:href="@{/truck-details/{id}(id=*{id})}" class="btn btn-secondary py-2 ml-1">Details</a></p>
     					</div>
     				</div>

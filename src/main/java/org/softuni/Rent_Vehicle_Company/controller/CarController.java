@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @Controller
+@RequestMapping("/cars")
 public class CarController {
 
     @ModelAttribute("allCarsType")
@@ -55,7 +56,7 @@ public class CarController {
 
 
     //GETTING ALL CARS FROM DB - LIST
-    @GetMapping("/cars")
+    @GetMapping("")
     public String getAllCars(Model model) {
 
         model.addAttribute("allCars", carService.getAllCarSummary());

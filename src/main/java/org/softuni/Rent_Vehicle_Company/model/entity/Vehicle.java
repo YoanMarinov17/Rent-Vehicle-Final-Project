@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.softuni.Rent_Vehicle_Company.model.enums.EngineEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 
+import java.util.List;
+
 @Entity
 @Table(name = "vehicles")
 @Getter
@@ -49,6 +51,9 @@ public abstract class Vehicle extends BaseEntity{
     @Column(name = "image_url")
     @Size(min = 5, max = 1232132132)
     private String imageUrl;
+
+    @OneToMany(mappedBy = "vehicle")
+    private List<Reservation> reservation;
 
 
 

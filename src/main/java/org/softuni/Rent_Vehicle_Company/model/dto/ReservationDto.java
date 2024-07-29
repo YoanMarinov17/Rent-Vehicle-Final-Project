@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,15 +22,17 @@ public class ReservationDto {
     private String location;
 
     @NotNull
-    private LocalDate fromDate;
+    private String fromDate;
 
 
     @NotNull
-    private LocalDate endDate;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+
+    private String endDate;
 
 
     @NotNull
-    private LocalTime pickUpTime;
+    private String pickUpTime;
 
     @NotNull
     private String cardCredentials;

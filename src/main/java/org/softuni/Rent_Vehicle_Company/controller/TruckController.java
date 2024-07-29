@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @Controller
+@RequestMapping("/trucks")
 public class TruckController {
 
     private final VehicleService vehicleService;
@@ -51,7 +52,7 @@ public class TruckController {
     }
 
 
-    @GetMapping("/trucks")
+    @GetMapping("")
     public String getAllTrucks(Model model) {
 
         model.addAttribute("allTrucks", truckService.getAllTrucksSummary());
