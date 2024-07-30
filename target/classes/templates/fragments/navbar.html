@@ -30,9 +30,9 @@
                         <ul class="dropdown-content">
                             <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
                                 <ul>
-                                    <li class="nav-item"><a  th:href="@{/add-car}" class="nav-link">Cars</a>
-                                    <li class="nav-item"><a  th:href="@{/add-van}" class="nav-link">Vans</a>
-                                    <li class="nav-item"><a  th:href="@{/add-truck}" class="nav-link">Trucks</a>
+                                    <li class="nav-item"><a  th:href="@{/cars/add-car}" class="nav-link">Cars</a>
+                                    <li class="nav-item"><a  th:href="@{/vans/add-van}" class="nav-link">Vans</a>
+                                    <li class="nav-item"><a  th:href="@{/trucks/add-truck}" class="nav-link">Trucks</a>
                                 </ul>
                             </li>
                         </ul>
@@ -51,6 +51,9 @@
                 </li>
 
                 <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR', 'USER')" th:href="@{/my-vehicles}" class="nav-link">My vehicles</a></li>
+
+                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR')" th:href="@{/my-requests}" class="nav-link">My requests</a></li>
+
 
 
                 <li class="dropdown nav-item active"  ><a sec:authorize="hasAnyRole('ADMIN')" th:href="@{/admin}" class="nav-link">Admin</a>

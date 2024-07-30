@@ -36,4 +36,7 @@ public class ReservationDto {
 
     @NotNull
     private String cardCredentials;
+
+    private String status;
+
 }

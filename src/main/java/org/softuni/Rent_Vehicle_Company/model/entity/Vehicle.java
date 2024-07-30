@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.EngineEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 
@@ -43,6 +44,9 @@ public abstract class Vehicle extends BaseEntity{
     @Column
     @Enumerated(value = EnumType.STRING)
     private EngineEnum engine;
+
+
+
 
     @ManyToOne()
     @JoinColumn(name = "user_id")

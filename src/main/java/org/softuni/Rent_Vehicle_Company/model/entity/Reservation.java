@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -39,15 +40,23 @@ public class Reservation  extends BaseEntity{
     @Column(name = "card_credentials")
     private String cardCredentials;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusEnum status;
+
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
 
 
 
+
     @ManyToOne()
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
+
+
+
 
 
 }

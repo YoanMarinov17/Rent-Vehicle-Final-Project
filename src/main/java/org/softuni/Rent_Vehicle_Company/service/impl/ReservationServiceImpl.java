@@ -2,11 +2,10 @@ package org.softuni.Rent_Vehicle_Company.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.softuni.Rent_Vehicle_Company.model.dto.ReservationDto;
-import org.softuni.Rent_Vehicle_Company.model.entity.Car;
 import org.softuni.Rent_Vehicle_Company.model.entity.Reservation;
 import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
-import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
+import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
 import org.softuni.Rent_Vehicle_Company.repository.ReservationRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
@@ -17,6 +16,8 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -42,7 +43,6 @@ public class ReservationServiceImpl implements ReservationService {
     public void createReservation(ReservationDto resDto, Principal principal, Long id) {
 
 
-
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(id);
         String name = principal.getName();
         Optional<User> optionalUser = userRepository.findByUsername(name);
@@ -59,7 +59,33 @@ public class ReservationServiceImpl implements ReservationService {
             res.setPickUpTime(time);
             res.setVehicle(currentVehicle);
             res.setUser(optionalUser.get());
+            res.setStatus(StatusEnum.PENDING);
             reservationRepository.save(res);
         }
+    }
+
+    @Override
+    public List<Reservation> getAllPendingRequests(Principal principal) {
+
+        String name = principal.getName();
+
+        Optional<User> optionalUser = userRepository.findByUsername(name);
+
+        List<Reservation> getAllReservationsForCurrentUser = new ArrayList<>();
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+
+            getAllReservationsForCurrentUser = reservationRepository.findAll().stream().filter(r ->
+                    r.getStatus() == StatusEnum.PENDING && r.getVehicle().getUser().getId() == user.getId()).toList();
+
+        }
+
+        return getAllReservationsForCurrentUser;
+    }
+
+
+    @Override
+    public void changeStatus(ReservationDto reservationDto, Principal principal) {
+
     }
 }

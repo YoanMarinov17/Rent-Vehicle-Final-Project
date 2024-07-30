@@ -52,6 +52,9 @@
 
                 <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR', 'USER')" th:href="@{/my-vehicles}" class="nav-link">My vehicles</a></li>
 
+                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR')" th:href="@{/my-requests}" class="nav-link">My requests</a></li>
+
+
 
                 <li class="dropdown nav-item active"  ><a sec:authorize="hasAnyRole('ADMIN')" th:href="@{/admin}" class="nav-link">Admin</a>
                     <ul class="dropdown-content">

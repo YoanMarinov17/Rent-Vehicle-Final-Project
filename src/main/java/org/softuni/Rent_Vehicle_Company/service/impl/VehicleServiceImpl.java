@@ -7,6 +7,7 @@ import org.softuni.Rent_Vehicle_Company.model.dto.TruckDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VanDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VehicleDto;
 import org.softuni.Rent_Vehicle_Company.model.entity.*;
+import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 import org.softuni.Rent_Vehicle_Company.repository.CarRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
@@ -75,8 +76,13 @@ public class VehicleServiceImpl implements VehicleService {
             van.setType(TypeEnum.VAN);
             van.setUser(user);
             vehicleRepository.save(van);
-
         }
+
+
+
+
+
+
     }
 
     @Override
