@@ -83,9 +83,11 @@ public class ReservationServiceImpl implements ReservationService {
         return getAllReservationsForCurrentUser;
     }
 
-
     @Override
-    public void changeStatus(ReservationDto reservationDto, Principal principal) {
+    public void getRequestStatus(Long id) {
+
 
     }
+
+
 }

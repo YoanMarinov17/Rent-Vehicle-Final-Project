@@ -11,6 +11,7 @@ public interface ReservationService {
 
     List<Reservation> getAllPendingRequests(Principal principal);
 
-    void changeStatus(ReservationDto reservationDto, Principal principal);
+
+    void getRequestStatus(Long id);
 }
 

@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar-language.css}" rel="stylesheet">
 </head>
 
 
@@ -22,41 +23,38 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item active"><a  sec:authorize="isAuthenticated()" th:href="@{/}" class="nav-link">Home</a></li>
 
-
-
-                <li class="dropdown nav-item" ><a  sec:authorize="hasRole('MODERATOR')" th:href="@{/services}" class="nav-link">Rent out vehicle</a>
+                <li class="dropdown nav-item" ><a  sec:authorize="hasRole('MODERATOR')" th:href="@{/services}"  th:text="#{nav_bar_rent_out_vehicle}" class="nav-link">Rent out vehicle</a>
                         <ul class="dropdown-content">
-                            <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
+                            <li class="nav-item"><a   class="nav-link" th:text="#{nav_bar_type_of_vehicle}">Type of vehicle :</a>
                                 <ul>
-                                    <li class="nav-item"><a  th:href="@{/cars/add-car}" class="nav-link">Cars</a>
-                                    <li class="nav-item"><a  th:href="@{/vans/add-van}" class="nav-link">Vans</a>
-                                    <li class="nav-item"><a  th:href="@{/trucks/add-truck}" class="nav-link">Trucks</a>
+                                    <li class="nav-item"><a  th:href="@{/cars/add-car}" th:text="#{nav_bar_cars}" class="nav-link">Cars</a>
+                                    <li class="nav-item"><a  th:href="@{/vans/add-van}"  th:text="#{nav_bar_vans}" class="nav-link">Vans</a>
+                                    <li class="nav-item"><a  th:href="@{/trucks/add-truck}"  th:text="#{nav_bar_trucks}" class="nav-link">Trucks</a>
                                 </ul>
                             </li>
                         </ul>
                 </li>
 
-                <li class="dropdown nav-item"><a  sec:authorize="hasRole('USER')" th:href="@{/car}" class="nav-link">Rent a vehicle</a>
+                <li class="dropdown nav-item"><a  sec:authorize="hasRole('USER')" th:href="@{/car}" th:text="#{nav_bar_rent_a_vehicle}" class="nav-link">Rent a vehicle</a>
                     <ul class="dropdown-content">
-                        <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
+                        <li class="nav-item"><a   class="nav-link" th:text="#{nav_bar_type_of_vehicle}" >Type of vehicle :</a>
                             <ul>
-                                <li class="nav-item"><a  th:href="@{/cars}" class="nav-link">Rent a car</a>
-                                <li class="nav-item"><a  th:href="@{/vans}" class="nav-link">Rent a van</a>
-                                <li class="nav-item"><a  th:href="@{/trucks}" class="nav-link">Rent a truck</a>
+                                <li class="nav-item"><a  th:href="@{/cars}"  th:text="#{nav_bar_rent_cars}" class="nav-link">Rent a car</a>
+                                <li class="nav-item"><a  th:href="@{/vans}" th:text="#{nav_bar_rent_vans}" class="nav-link">Rent a van</a>
+                                <li class="nav-item"><a  th:href="@{/trucks}" th:text="#{nav_bar_rent_trucks}" class="nav-link">Rent a truck</a>
                             </ul>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR', 'USER')" th:href="@{/my-vehicles}" class="nav-link">My vehicles</a></li>
+                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR', 'USER')" th:href="@{/my-vehicles}" th:text="#{nav_bar_my_vehicles}" class="nav-link">My vehicles</a></li>
 
-                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR')" th:href="@{/my-requests}" class="nav-link">My requests</a></li>
+                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR')" th:href="@{/my-requests}" th:text="#{nav_bar_my_requests}"  class="nav-link">My requests</a></li>
 
 
 
-                <li class="dropdown nav-item active"  ><a sec:authorize="hasAnyRole('ADMIN')" th:href="@{/admin}" class="nav-link">Admin</a>
+                <li class="dropdown nav-item active"  ><a sec:authorize="hasAnyRole('ADMIN')" th:href="@{/admin}" th:text="#{nav_bar_admin}" class="nav-link">Admin</a>
                     <ul class="dropdown-content">
 
                         <ul>
@@ -68,7 +66,7 @@
                     </ul>
                 </li>
 
-                <li class="dropdown nav-item"><a  sec:authorize="!isAuthenticated()" th:href="@{/vehicles}" class="nav-link">Vehicles</a>
+                <li class="dropdown nav-item"><a  sec:authorize="!isAuthenticated()" th:href="@{/vehicles}" th:text="#{nav_bar_vehicles}" class="nav-link">Vehicles</a>
                     <ul class="dropdown-content">
                         <li class="nav-item"><a   class="nav-link">Type of vehicle :</a>
                             <ul>
@@ -80,19 +78,22 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a  th:href="@{/about}"  class="nav-link">About</a></li>
+                <li class="nav-item"><a  th:href="@{/about}" th:text="#{nav_bar_about}" sec:authorize="!isAuthenticated()" class="nav-link">About</a></li>
 
-                <li class="nav-item"><a  th:href="@{/contact}" class="nav-link">Contact</a></li>
-
-
+                <li class="nav-item"><a  th:href="@{/contact}" class="nav-link"  sec:authorize="!isAuthenticated()" th:text="#{nav_bar_contact}">Contact</a></li>
 
 
 
 
 
-                <li class="nav-item active"><a sec:authorize="!isAuthenticated()" th:href="@{/register}" class="nav-link">Register</a></li>
 
-                <li class="nav-item active"><a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-link">Login</a></li>
+
+                <li class="nav-item active"><a sec:authorize="!isAuthenticated()"  th:href="@{/register}" th:text="#{nav_bar_register}" class="nav-link">Register</a></li>
+
+                <li class="nav-item active"><a sec:authorize="!isAuthenticated()" th:href="@{/login}" th:text="#{nav_bar_login}" class="nav-link">Login</a></li>
+
+
+
 
 
                     <form class="nav-item active"
@@ -100,8 +101,24 @@
                           th:action="@{/logout}"
                           sec:authorize="isAuthenticated()">
 
-                        <button type="submit" class="nav-link">Logout</button>
+                        <button type="submit" th:text="#{nav_bar_logout}" class="nav-link">Logout</button>
                     </form>
+
+
+
+                <li class="language-bar nav-link">
+                    <form th:method="get">
+                        <label class="text-white" for="lang" th:text="#{nav_bar_language}">Language</label>
+                        <select
+                                id="lang"
+                                name="lang"
+                                onchange="this.form.submit()">
+                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                        </select>
+                    </form>
+
+                </li>
 
 
 
