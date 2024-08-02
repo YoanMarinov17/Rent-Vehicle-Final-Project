@@ -31,9 +31,6 @@ public class Role  {
     private UserRoleEnum role;
 
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<User> users;
-
 
 
 }

@@ -5,24 +5,22 @@ import org.modelmapper.ModelMapper;
 import org.softuni.Rent_Vehicle_Company.model.dto.CarDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.TruckDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VanDto;
-import org.softuni.Rent_Vehicle_Company.model.dto.VehicleDto;
+
 import org.softuni.Rent_Vehicle_Company.model.entity.*;
-import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
+
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
-import org.softuni.Rent_Vehicle_Company.repository.CarRepository;
+
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
-import org.softuni.Rent_Vehicle_Company.service.UserService;
+
 import org.softuni.Rent_Vehicle_Company.service.VehicleService;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
@@ -30,18 +28,14 @@ public class VehicleServiceImpl implements VehicleService {
     private final VehicleRepository vehicleRepository;
     private final ModelMapper modelMapper;
 
-    private final UserService userService;
-
-    private final CarRepository carRepository;
-
     private final UserRepository userRepository;
 
 
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserService userService, CarRepository carRepository, CarRepository carRepository1, UserRepository userRepository) {
+
+
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.vehicleRepository = vehicleRepository;
         this.modelMapper = modelMapper;
-        this.userService = userService;
-        this.carRepository = carRepository1;
         this.userRepository = userRepository;
 
     }
@@ -77,10 +71,6 @@ public class VehicleServiceImpl implements VehicleService {
             van.setUser(user);
             vehicleRepository.save(van);
         }
-
-
-
-
 
 
     }
@@ -121,7 +111,6 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
 
-
     @Override
     public Vehicle getVehicleDetails(Long id) throws ChangeSetPersister.NotFoundException {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(id);
@@ -134,6 +123,24 @@ public class VehicleServiceImpl implements VehicleService {
     public void deleteOffer(Long id) {
 
         vehicleRepository.deleteById(id);
+    }
+
+    @Override
+    public Map<User, List<Vehicle>> findAllVehiclesByUser() {
+        List<User> all = userRepository.findAll();
+
+        Map<User, List<Vehicle>> userListMap = new LinkedHashMap<>();
+
+        for (User user : all) {
+            List<Vehicle> vehicles = new ArrayList<>();
+//            vehicles.addAll(user.getVehicles());
+            userListMap.put(user, vehicles);
+        }
+
+
+
+
+        return userListMap;
     }
 
 

@@ -58,9 +58,11 @@
                     <ul class="dropdown-content">
 
                         <ul>
-                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">View requests for car</a>
-                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">View requests for van</a>
-                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">View requests for truck</a>
+                            <li class="nav-item"><a  th:href="@{/admin/all-users}" class="nav-link">View all users</a>
+                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">Requests for car ads </a>
+                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">Requests for van ads </a>
+                            <li class="nav-item"><a  th:href="@{/admin}" class="nav-link">Requests for truck ads </a>
+
                         </ul>
 
                     </ul>
@@ -115,6 +117,7 @@
                                 onchange="this.form.submit()">
                             <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
                             <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                            <option value="de_DE" th:selected="${#locale.toString()} == 'de_DE'">Deutsch</option>
                         </select>
                     </form>
 

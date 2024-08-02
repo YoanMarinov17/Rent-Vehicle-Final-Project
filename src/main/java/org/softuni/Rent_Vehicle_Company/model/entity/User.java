@@ -34,7 +34,7 @@ public class User extends BaseEntity {
 
 
 
-        @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+        @ManyToMany(fetch = FetchType.EAGER)
         @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
         @Enumerated(EnumType.STRING)
@@ -50,16 +50,10 @@ public class User extends BaseEntity {
         private List<Reservation> reservations = new ArrayList<>();
 
 
-        @ElementCollection(fetch = FetchType.EAGER)
-        private List<GrantedAuthority> authorities;
-
-
-
 
         public void setRole(Role role){
                 this.roles.add(role);
         }
 
         public User() {}
-
         }

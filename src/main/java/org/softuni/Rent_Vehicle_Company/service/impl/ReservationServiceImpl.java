@@ -10,6 +10,8 @@ import org.softuni.Rent_Vehicle_Company.repository.ReservationRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -19,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,7 +32,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final VehicleRepository vehicleRepository;
 
-    private final ReservationRepository reservationRepository;
+
+        private final ReservationRepository reservationRepository;
 
     public ReservationServiceImpl(UserRepository userRepository, ModelMapper modelMapper, VehicleRepository vehicleRepository, ReservationRepository reservationRepository) {
         this.userRepository = userRepository;
@@ -87,6 +91,17 @@ public class ReservationServiceImpl implements ReservationService {
     public void getRequestStatus(Long id) {
 
 
+    }
+
+
+    public List<Reservation> findExpiredReservations() {
+       //Get all reservations
+        List<Reservation> reservations = reservationRepository.findAll();
+
+        // Filter reservations where the end date is before LocalDate.now()
+        return reservations.stream()
+                .filter(reservation -> reservation.getEndDate() != null && reservation.getEndDate().isBefore(LocalDate.now()))
+                .collect(Collectors.toList());
     }
 
 

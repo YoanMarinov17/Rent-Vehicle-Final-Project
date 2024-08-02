@@ -11,7 +11,9 @@ import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.EngineEnum;
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "vehicles")
@@ -57,10 +59,7 @@ public abstract class Vehicle extends BaseEntity{
     private String imageUrl;
 
     @OneToMany(mappedBy = "vehicle")
-    private List<Reservation> reservation;
-
-
-
+    private List<Reservation> reservation = new ArrayList<>();
 
 
 }

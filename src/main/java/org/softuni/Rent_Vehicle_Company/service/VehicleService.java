@@ -3,16 +3,13 @@ package org.softuni.Rent_Vehicle_Company.service;
 import org.softuni.Rent_Vehicle_Company.model.dto.CarDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.TruckDto;
 import org.softuni.Rent_Vehicle_Company.model.dto.VanDto;
-import org.softuni.Rent_Vehicle_Company.model.dto.VehicleDto;
-import org.softuni.Rent_Vehicle_Company.model.entity.Car;
-import org.softuni.Rent_Vehicle_Company.model.entity.Truck;
-import org.softuni.Rent_Vehicle_Company.model.entity.Van;
+import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
-import org.softuni.Rent_Vehicle_Company.model.enums.TypeCar;
 import org.springframework.data.crossstore.ChangeSetPersister;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 public interface VehicleService {
 
@@ -26,4 +23,9 @@ public interface VehicleService {
     Vehicle getVehicleDetails(Long id) throws ChangeSetPersister.NotFoundException;
 
     void deleteOffer(Long id);
+
+
+
+
 }
+

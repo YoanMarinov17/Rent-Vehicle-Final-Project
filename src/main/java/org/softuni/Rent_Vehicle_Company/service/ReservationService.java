@@ -13,5 +13,6 @@ public interface ReservationService {
 
 
     void getRequestStatus(Long id);
+    List<Reservation> findExpiredReservations();
 }
 
