@@ -25,7 +25,5 @@ public interface VehicleService {
     void deleteOffer(Long id);
 
 
-
-
 }
 

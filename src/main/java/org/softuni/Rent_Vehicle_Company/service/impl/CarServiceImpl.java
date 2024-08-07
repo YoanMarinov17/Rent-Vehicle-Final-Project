@@ -1,19 +1,13 @@
 package org.softuni.Rent_Vehicle_Company.service.impl;
 
-import jakarta.persistence.Cache;
-import org.softuni.Rent_Vehicle_Company.model.dto.CarDto;
 import org.softuni.Rent_Vehicle_Company.model.entity.Car;
-import org.softuni.Rent_Vehicle_Company.model.entity.Van;
-import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
 import org.softuni.Rent_Vehicle_Company.repository.CarRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.CarService;
-import org.softuni.Rent_Vehicle_Company.service.VehicleService;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 

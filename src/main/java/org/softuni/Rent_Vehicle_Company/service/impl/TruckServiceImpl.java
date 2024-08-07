@@ -2,7 +2,6 @@ package org.softuni.Rent_Vehicle_Company.service.impl;
 
 import org.softuni.Rent_Vehicle_Company.model.entity.Car;
 import org.softuni.Rent_Vehicle_Company.model.entity.Truck;
-import org.softuni.Rent_Vehicle_Company.model.entity.Van;
 import org.softuni.Rent_Vehicle_Company.repository.TruckRepository;
 import org.softuni.Rent_Vehicle_Company.service.TruckService;
 import org.springframework.data.crossstore.ChangeSetPersister;

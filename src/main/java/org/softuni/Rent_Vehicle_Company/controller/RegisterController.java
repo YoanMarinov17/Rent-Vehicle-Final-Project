@@ -50,14 +50,12 @@ public class RegisterController {
     @PostMapping("/register")
     public ModelAndView doRegister(@Valid UserRegisterDto data, BindingResult bindingResult, ModelAndView model, RedirectAttributes ra) {
 
-
 //        Check if username already exist in the DB.
         if (userService.userExist(data.getUsername())) {
             bindingResult.addError(new FieldError("userRegisterDto",
                     "username",
                     "- Username already exists !"));
         }
-
 
 //Check if email already exist in the DB.
         if (userService.emailExist(data.getEmail())) {
@@ -73,20 +71,16 @@ public class RegisterController {
             }
         }
 
-
-
         if (bindingResult.hasErrors()) {
             model.setViewName("registration");
             return model;
         }
 
-
-
         //Show successful message for registration
         ra.addFlashAttribute("message", "Congratulations ! Your registration is ready.");
 
         // Register user in the DB.
-       User user =  userService.register(data);
+       userService.register(data);
 
         model.setViewName("redirect:/login");
         return model;

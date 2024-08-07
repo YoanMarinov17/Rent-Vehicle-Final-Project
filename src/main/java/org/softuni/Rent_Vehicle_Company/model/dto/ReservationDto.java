@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.softuni.Rent_Vehicle_Company.model.enums.StatusEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -27,7 +28,6 @@ public class ReservationDto {
 
     @NotNull
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-
     private String endDate;
 
 
@@ -37,6 +37,7 @@ public class ReservationDto {
     @NotNull
     private String cardCredentials;
 
-    private String status;
+
+    private StatusEnum status;
 
 }

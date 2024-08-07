@@ -11,7 +11,7 @@ import java.util.Map;
 public  interface UserService {
 
 
-     User register(UserRegisterDto data);
+     void register(UserRegisterDto data);
 
      public boolean userExist(String username);
 

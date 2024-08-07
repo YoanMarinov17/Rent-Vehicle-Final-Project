@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
+import org.softuni.Rent_Vehicle_Company.model.enums.StatusEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;

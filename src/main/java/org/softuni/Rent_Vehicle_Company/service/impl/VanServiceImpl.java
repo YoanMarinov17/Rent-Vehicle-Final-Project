@@ -1,10 +1,7 @@
 package org.softuni.Rent_Vehicle_Company.service.impl;
 
-import org.hibernate.annotations.NotFound;
 import org.softuni.Rent_Vehicle_Company.model.entity.Car;
-import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.model.entity.Van;
-import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
 import org.softuni.Rent_Vehicle_Company.repository.VanRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.VanService;

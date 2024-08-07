@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -53,6 +52,7 @@ public class VehicleServiceImpl implements VehicleService {
             Car car = modelMapper.map(carDto, Car.class);
             car.setType(TypeEnum.CAR);
             car.setUser(user);
+            car.setIsReserved(false);
             vehicleRepository.save(car);
         }
     }
@@ -69,6 +69,7 @@ public class VehicleServiceImpl implements VehicleService {
             Van van = modelMapper.map(vanDto, Van.class);
             van.setType(TypeEnum.VAN);
             van.setUser(user);
+            van.setIsReserved(false);
             vehicleRepository.save(van);
         }
 
@@ -87,6 +88,7 @@ public class VehicleServiceImpl implements VehicleService {
             Truck truck = modelMapper.map(truckDto, Truck.class);
             truck.setType(TypeEnum.TRUCK);
             truck.setUser(user);
+            truck.setIsReserved(false);
             vehicleRepository.save(truck);
 
         }
@@ -125,23 +127,7 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.deleteById(id);
     }
 
-    @Override
-    public Map<User, List<Vehicle>> findAllVehiclesByUser() {
-        List<User> all = userRepository.findAll();
 
-        Map<User, List<Vehicle>> userListMap = new LinkedHashMap<>();
-
-        for (User user : all) {
-            List<Vehicle> vehicles = new ArrayList<>();
-//            vehicles.addAll(user.getVehicles());
-            userListMap.put(user, vehicles);
-        }
-
-
-
-
-        return userListMap;
-    }
 
 
 }

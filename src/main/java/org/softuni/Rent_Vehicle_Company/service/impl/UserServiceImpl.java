@@ -24,13 +24,9 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-
-
-
-
     private final RoleRepository roleRepository;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, ModelMapper modelMapper,  RoleRepository roleRepository) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, ModelMapper modelMapper, RoleRepository roleRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
@@ -38,65 +34,43 @@ public class UserServiceImpl implements UserService {
 
         this.roleRepository = roleRepository;
     }
-@Transactional
-    public User register(UserRegisterDto data) {
+
+    @Transactional
+    public void register(UserRegisterDto data) {
 
         User user = modelMapper.map(data, User.class);
         user.setPassword(passwordEncoder.encode(data.getPassword()));
 
-        boolean isFirstUser = userRepository.count() == 0 ;
-        boolean isSecondUser = userRepository.count() == 1 || userRepository.count() == 2   ;
-    ;
+        boolean isFirstUser = userRepository.count() == 0;
+        boolean isSecondUser = userRepository.count() == 1 || userRepository.count() == 2;
 
         if (isFirstUser) {
             // Assign ADMIN role
             Role admin = roleRepository.findByRole(UserRoleEnum.ADMIN);
-            Role moderator = roleRepository.findByRole(UserRoleEnum.MODERATOR);
-            Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
-
-            user.setRoles(List.of(admin, moderator, userRole));
-
-
-
+            user.setRoles(List.of(admin));
         } else if (isSecondUser) {
-
             Role moderator = roleRepository.findByRole(UserRoleEnum.MODERATOR);
-            Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
-            user.setRoles(List.of(moderator, userRole));
-
+            user.setRoles(List.of(moderator));
         } else {
             Role userRole = roleRepository.findByRole(UserRoleEnum.USER);
             user.setRoles(List.of(userRole));
         }
-
-
         userRepository.save(user);
-
-
-        return user;
-
     }
 
-
     @Override
-    //Ako user-a съществува ще върне true / ако не съществува - false
     public boolean userExist(String username) {
         return this.userRepository.findByUsername(username).isPresent();
     }
 
     @Override
-    //Ako email-a съществува ще върне true / ако не съществува - false
     public boolean emailExist(String email) {
         return this.userRepository.findByEmail(email).isPresent();
     }
 
     @Override
-    public  Map<User, Map<List<Vehicle>, List<Role>>> findAllRolesByUser() {
-
+    public Map<User, Map<List<Vehicle>, List<Role>>> findAllRolesByUser() {
         List<User> all = userRepository.findAll();
-
-
-
         Map<User, Map<List<Vehicle>, List<Role>>> userVehiclesRolesMap = new LinkedHashMap<>();
 
         for (User user : all) {
@@ -106,28 +80,17 @@ public class UserServiceImpl implements UserService {
             vehiclesRolesMap.put(userVehicles, userRoles);
             userVehiclesRolesMap.put(user, vehiclesRolesMap);
         }
-
-
         return userVehiclesRolesMap;
-
     }
-
-
 
     @Override
     public User getCurrentUser(Long id) {
-
         Optional<User> byId = userRepository.findById(id);
-
         return byId.get();
-
     }
 
     @Override
     public void deleteCurrentUser(Long id) {
         userRepository.deleteById(id);
     }
-
-
 }
-

@@ -22,7 +22,7 @@ public class SecurityConfig {
                         authorizeRequests ->
                                 authorizeRequests
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()//Позволява да се свалят всички статични ресурси от всеки един в сайта.
-                                        .requestMatchers("/","/about","/contact", "/register", "/login", "/car", "/login-error","/pricing").permitAll()//Позволява избраните уеб страници да бъдат достъпни за всички.
+                                        .requestMatchers("/","/about","/contact", "/register", "/login", "/login-error","/pricing").permitAll()//Позволява избраните уеб страници да бъдат достъпни за всички.
                                         .anyRequest().authenticated())// Всичко останало е забранено и се изисква ауторизация/
                 .formLogin(formLogin ->
                         formLogin.loginPage("/login")

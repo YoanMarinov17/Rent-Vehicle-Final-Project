@@ -5,13 +5,11 @@ import org.softuni.Rent_Vehicle_Company.model.dto.ReservationDto;
 import org.softuni.Rent_Vehicle_Company.model.entity.Reservation;
 import org.softuni.Rent_Vehicle_Company.model.entity.User;
 import org.softuni.Rent_Vehicle_Company.model.entity.Vehicle;
-import org.softuni.Rent_Vehicle_Company.model.entity.enums.StatusEnum;
+import org.softuni.Rent_Vehicle_Company.model.enums.StatusEnum;
 import org.softuni.Rent_Vehicle_Company.repository.ReservationRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 import org.softuni.Rent_Vehicle_Company.service.ReservationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -33,7 +31,7 @@ public class ReservationServiceImpl implements ReservationService {
     private final VehicleRepository vehicleRepository;
 
 
-        private final ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     public ReservationServiceImpl(UserRepository userRepository, ModelMapper modelMapper, VehicleRepository vehicleRepository, ReservationRepository reservationRepository) {
         this.userRepository = userRepository;
@@ -50,10 +48,8 @@ public class ReservationServiceImpl implements ReservationService {
         Optional<Vehicle> optionalVehicle = vehicleRepository.findById(id);
         String name = principal.getName();
         Optional<User> optionalUser = userRepository.findByUsername(name);
-
         if (optionalVehicle.isPresent() && optionalUser.isPresent()) {
             Vehicle currentVehicle = optionalVehicle.get();
-
             Reservation res = modelMapper.map(resDto, Reservation.class);
             LocalDate fromDate = LocalDate.parse(resDto.getFromDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             LocalDate endDate = LocalDate.parse(resDto.getEndDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -67,7 +63,6 @@ public class ReservationServiceImpl implements ReservationService {
             reservationRepository.save(res);
         }
     }
-
     @Override
     public List<Reservation> getAllPendingRequests(Principal principal) {
 
@@ -81,28 +76,19 @@ public class ReservationServiceImpl implements ReservationService {
 
             getAllReservationsForCurrentUser = reservationRepository.findAll().stream().filter(r ->
                     r.getStatus() == StatusEnum.PENDING && r.getVehicle().getUser().getId() == user.getId()).toList();
-
         }
-
         return getAllReservationsForCurrentUser;
     }
 
     @Override
     public void getRequestStatus(Long id) {
-
-
     }
 
 
     public List<Reservation> findExpiredReservations() {
-       //Get all reservations
         List<Reservation> reservations = reservationRepository.findAll();
-
-        // Filter reservations where the end date is before LocalDate.now()
         return reservations.stream()
                 .filter(reservation -> reservation.getEndDate() != null && reservation.getEndDate().isBefore(LocalDate.now()))
                 .collect(Collectors.toList());
     }
-
-
 }
