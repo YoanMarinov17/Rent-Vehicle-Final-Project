@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <link rel="stylesheet" href="/css/admin-all-users.css">
+
+</head>
+<body>
+
+<h1>Users List</h1>
+
+<div  class="alert alert-info text-center" th:if="${message}" th:text="${message}" style="color: green;"></div>
+<div class="alert alert-info text-center"  th:if="${error}" th:text="${error}" style="color: red;"></div>
+
+<div th:each="entry : ${userInfo}">
+
+    <table class="requests-table">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>User ID</th>
+            <th>Email</th>
+            <th>Vehicles</th>
+            <th>Role</th>
+            <th>Delete user</th>
+        </tr>
+        </thead>
+        <tbody id="requests-body" class="container">
+        <tr>
+
+            <td th:text="${entry.key.username}"></td>
+            <td th:text="${entry.key.id}"></td>
+            <td th:text="${entry.key.email}"></td>
+
+
+            <td th:each="keyVehicle : ${entry.value}">
+
+                <ul th:each="vehicle : ${keyVehicle.key}">
+                    <li>
+                        <span th:text="${vehicle.brand} + ' ' + ${vehicle.model} + ' (' + ${vehicle.type} + ')'"></span>
+                    </li>
+                </ul>
+            </td>
+
+            <td th:each="roles : ${entry.value}">
+                <ul>
+                    <li th:each="role : ${roles.value}">
+                        <span th:text="${role.role}"></span>
+                    </li>
+                </ul>
+            </td>
+
+            <td>
+
+                <p class="d-flex mb-0 d-block"><a
+                        th:href="@{/admin/delete-user/{id}(id=*{entry.key.id})}"
+                        class="btn-delete">Delete user</a></p>
+            </td>
+        </tr>
+        </tbody>
+
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

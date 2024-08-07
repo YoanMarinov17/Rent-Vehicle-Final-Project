@@ -48,7 +48,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR', 'USER')" th:href="@{/my-vehicles}" th:text="#{nav_bar_my_vehicles}" class="nav-link">My vehicles</a></li>
+                <li class="nav-item active"><a  sec:authorize="hasAnyRole('USER')" th:href="@{/user-vehicles}" th:text="#{nav_bar_my_vehicles}" class="nav-link">My vehicles</a></li>
 
                 <li class="nav-item active"><a  sec:authorize="hasAnyRole('MODERATOR')" th:href="@{/my-requests}" th:text="#{nav_bar_my_requests}"  class="nav-link">My requests</a></li>
 

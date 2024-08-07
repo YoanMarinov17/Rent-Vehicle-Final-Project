@@ -37,14 +37,19 @@
 <section class="ftco-section bg-light">
     <div class="car-container"
 
-         th:each="vehicle : ${allVehicles}"
-         th:value="${vehicle}">
+         th:each="entry : ${allVehicles}">
+<!--         th:value="${vehicle}">-->
         <div class="row">
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end"><img th:src="@{${vehicle.imageUrl}}" alt="Car Image" /></div>
+                    <div class="img rounded d-flex align-items-end"><img th:src="@{${entry.imageUrl}}" alt="Car Image" /></div>
+
+                    <td th:text="${entry.key.id}">Vehicle ID</td>
+                    <td th:text="${entry.key.model}">Vehicle Model</td>
+                    <td th:text="${entry.value.id}">Reservation ID</td>
+                    <td th:text="${entry.value.date}">Reservation Date</td>
                     <div class="text">
-                        <h2 class="mb-0"><a  th:text="*{vehicle.brand}"></a></h2>
+                        <h2 class="mb-0"><a  th:text="*{entry.}"></a></h2>
                         <div class="d-flex mb-3">
                             <div class="car-type">• Model: <span th:text="*{vehicle.model}"></span></div><br>
                         </div>

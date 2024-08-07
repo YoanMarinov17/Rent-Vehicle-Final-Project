@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th='http://www.thymeleaf.org' xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="/css/car-details.css">
+</head>
+<body>
+
+<div class="card"
+     th:object="${deleteUser}">
+
+
+    <div class="card-header">
+        <h2>User Details</h2>
+    </div>
+    <div class="card-body" >
+
+
+
+        <div class="car-detail">
+            <span class="label">ID:   <span class="value" th:text="${deleteUser.id}"></span></span>
+
+        </div>
+
+
+
+        <div class="car-detail">
+            <span class="label">Username:   <span class="value" th:text="${deleteUser.username}"></span></span>
+
+        </div>
+
+
+        <div class="car-detail">
+            <span class="label">Email:   <span class="value" th:text="${deleteUser.email}"></span></span>
+
+        </div>
+
+        <div class="car-detail">
+            <span class="label">Number of vehicles:   <span class="value" th:text="${deleteUser.vehicles.size()}"></span></span>
+
+        </div>
+
+
+
+        <form class="button-container"
+              th:method="delete"
+              th:action="@{/admin/delete-user/{id}(id=*{id})}">
+            <button class="btn delete">Delete user</button>
+
+        </form>
+
+
+
+
+
+
+    </div>
+</div>
+</body>
+</html>

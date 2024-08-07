@@ -10,6 +10,7 @@ import org.softuni.Rent_Vehicle_Company.model.entity.*;
 
 import org.softuni.Rent_Vehicle_Company.model.enums.TypeEnum;
 
+import org.softuni.Rent_Vehicle_Company.repository.ReservationRepository;
 import org.softuni.Rent_Vehicle_Company.repository.UserRepository;
 import org.softuni.Rent_Vehicle_Company.repository.VehicleRepository;
 
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,14 +31,15 @@ public class VehicleServiceImpl implements VehicleService {
 
     private final UserRepository userRepository;
 
+    private final ReservationRepository reservationRepository;
 
 
-
-    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserRepository userRepository) {
+    public VehicleServiceImpl(VehicleRepository vehicleRepository, ModelMapper modelMapper, UserRepository userRepository, ReservationRepository reservationRepository) {
         this.vehicleRepository = vehicleRepository;
         this.modelMapper = modelMapper;
         this.userRepository = userRepository;
 
+        this.reservationRepository = reservationRepository;
     }
 
 
@@ -127,7 +130,18 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.deleteById(id);
     }
 
+    @Override
+    public Map<Vehicle, Reservation> findAllByUserId(long id) {
 
+        List<Reservation> reservations = reservationRepository.findByUserId(id);
 
+        // Create a map of vehicles to reservations
+        Map<Vehicle, Reservation> vehicleReservations = reservations.stream()
+                .collect(Collectors.toMap(Reservation::getVehicle, reservation -> reservation));
 
+        return vehicleReservations;
+    }
 }
+
+
+

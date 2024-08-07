@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    z-index: 1000; /* Ensures the navbar stays on top */
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.language-bar {
+    margin-left: 20px;
+}
+
+.language-bar form {
+    display: flex;
+    align-items: center;
+}
+
+.language-bar label {
+    color: white;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.language-bar select {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.language-bar select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}

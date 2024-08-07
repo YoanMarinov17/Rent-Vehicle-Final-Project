@@ -46,7 +46,7 @@ public class User extends BaseEntity {
         private List<Vehicle> vehicles = new ArrayList<>();
 
 
-        @OneToMany(mappedBy = "user")
+        @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
         private List<Reservation> reservations = new ArrayList<>();
 
 

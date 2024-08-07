@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Request</title>
+    <link rel="stylesheet" href="/css/admin-all-users.css">
+</head>
+<body>
+
+<div class="container"
+
+     th:each="reservation : ${allReservations}"
+     th:object="${reservation}"
+     method="POST">
+
+
+    <h1>Rental Requests</h1>
+    <table class="requests-table">
+        <thead>
+        <tr>
+            <th>Reservation ID</th>
+            <th>User</th>
+            <th>Owner</th>
+            <th>Vehicle ID</th>
+            <th>Vehicle type</th>
+            <th>Vehicle brand</th>
+            <th>Request Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="requests-body">
+        <tr>
+            <td th:text="*{id}"></td>
+            <td th:text="*{user.username}"></td>
+            <td th:text="*{vehicle.user.id}"></td>
+            <td th:text="*{vehicle.id}"></td>
+            <td th:text="*{vehicle.type}"></td>
+            <td th:text="*{vehicle.brand}"></td>
+            <td th:text="*{fromDate}"></td>
+            <td th:text="*{status}"></td>
+            <td>
+
+                <a th:href="@{/my-requests?reservationID={reservationID}(reservationID=${reservation.id})}">
+                    <button class="approve-btn" type="submit"  th:value="approved">Approve</button>
+                </a>
+
+
+                <a th:href="@{/my-requests?reservationID={reservationID}(reservationID=${reservation.id})}">
+                    <button class="decline-btn" type="submit" >Decline</button>
+                </a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
